@@ -41,9 +41,9 @@ const DaySlots = ({
                 className="cell day-cell"
                 key="cell"
               >
-                {!rowIndex ? (
+                {rowIndex ? null : (
                   <TimePicker endHour={endHour} startHour={startHour} />
-                ) : null}
+                )}
                 {events.map(event => {
                   const isSelected = checkSelected(event.id, selectedEvent)
                   const eventIndex = eventsByDay.findIndex(

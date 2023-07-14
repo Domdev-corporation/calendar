@@ -1,13 +1,9 @@
 import Flex from '../../components/Flex'
 
 import { useTimePicker } from './useTimePicker'
+import { TimePickerProps } from './types'
 import { calculateTopIndentation, isDisplay } from './helpers'
 import { PICKER_SIZE } from './constants'
-
-type TimePickerProps = {
-  endHour: number
-  startHour: number
-}
 
 export const TimePicker = ({
   endHour,
