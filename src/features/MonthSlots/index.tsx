@@ -1,4 +1,6 @@
-import { MonthSlot } from '../MonthSlot'
+import MonthMobileSlot from '../MonthMobileSlot'
+import MonthHeader from '../MonthMobileHeader'
+import Flex from '../../components/Flex'
 
 import { MonthSlotsProps } from './types'
 
@@ -14,23 +16,19 @@ const MonthSlots = ({
   const slotCells = renderRows.map(cell => ({ ...cell, modalOpen: false }))
 
   return (
-    <>
-      <div className="month-cell-wrapper">
+    <div>
+      <MonthHeader />
+      <Flex wrap="wrap">
         {slotCells.map((cell, index) => (
-          <MonthSlot
-            eventModal={eventModal}
-            newEventModal={newEventModal}
-            key={cell.date.toDateString()}
+          <MonthMobileSlot
+            key={index}
             cell={cell}
-            index={index}
             onSelectDate={onSelectDate}
-            onClickEvent={onClickEvent}
-            onClickCell={onClickCell}
             selectedDate={selectedDate}
           />
         ))}
-      </div>
-    </>
+      </Flex>
+    </div>
   )
 }
 

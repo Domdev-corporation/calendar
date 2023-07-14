@@ -168,4 +168,14 @@ To change the order of the elements, edit this style: grid-template-areas: 'toda
 .event - styles the container that wraps event
 
 .modal-cross - styles the cross button in the modal with other events
+
+.month-cell--mobile - styles the container that wraps events in the mobile view of the monthly calendar
+
+.weekend - styles the weekends in the monthly calendar in the mobile view
+
+.mobile--other-month - styles the date cells that do not belong to the current month in the mobile view
+
+.dot - styles the  dot that represents the presence of events in the monthly calendar in the mobile view
+
+.month-header-mobile - styles the container that wraps the header for the monthly calendar in the mobile view
 ```

@@ -10,6 +10,7 @@ const Flex = ({
   spacing = 0,
   refObject,
   onClick = () => {},
+  wrap = 'nowrap',
   ...props
 }: FlexProps): JSX.Element => {
   return (
@@ -23,6 +24,7 @@ const Flex = ({
         alignItems: align,
         justifyContent: justify,
         gap: spacing,
+        flexWrap: wrap,
         ...sx,
       }}
       {...props}

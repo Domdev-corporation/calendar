@@ -1,0 +1,22 @@
+.month-cell--mobile {
+  height: 45px;
+  border-right: none;
+  flex: 1 1 calc(100% / 7);
+  border-bottom: var(--border-styles);
+}
+
+.weekend {
+  color: var(--grey);
+}
+
+.mobile--other-month {
+  visibility: hidden;
+  transition: 0ms;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--little-darker-grey);
+}

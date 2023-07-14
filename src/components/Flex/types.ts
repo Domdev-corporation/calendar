@@ -6,6 +6,7 @@ export type FlexProps = ReactChildrenT &
   CommonStylesT & {
     direction?: CSSProperties['flexDirection']
     justify?: CSSProperties['justifyContent']
+    wrap?: CSSProperties['flexWrap']
     align?: CSSProperties['alignItems']
     spacing?: CSSProperties['gap']
     refObject?: RefObject<HTMLDivElement>

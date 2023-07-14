@@ -15,6 +15,8 @@ export enum DaysOfTheWeek {
   SUN = 'Sunday',
 }
 
+export const SHORT_DAY_NAMES = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+
 export const CELL_HEIGHT = 60
 
 export const OVERLAP_STEP = 8
