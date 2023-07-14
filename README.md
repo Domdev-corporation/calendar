@@ -93,6 +93,12 @@ export const App = () => (
     <td>(start: Date, end: Date) => void</td>
   </tr>
   <tr>
+    <td>onChangeMode</td>
+    <td>Function to handle view mode change</td>
+    <td>-</td>
+    <td>(mode: "Day" | "Week" | "Month") => void</td>
+  </tr>
+  <tr>
     <td>config</td>
     <td>Configuration array for the calendar view containers</td>
     <td>-</td>

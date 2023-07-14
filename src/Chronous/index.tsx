@@ -3,7 +3,6 @@ import './styles.css'
 
 import { format } from 'date-fns'
 
-import { ViewsT } from '../types'
 import colors from '../theme/colors'
 import Button from '../features/Button'
 import { ModalProvider } from '../context/ModalContext'
@@ -40,6 +39,7 @@ const Calendar = ({
   onChangeDate = () => {},
   eventModal,
   newEventModal,
+  onChangeMode = () => {},
 }: CalendarProps): JSX.Element => {
   const {
     viewMode,
@@ -50,11 +50,11 @@ const Calendar = ({
     selectedDate,
     isDisabledNext,
     isDisabledPrevious,
-    setViewMode,
     next,
     previous,
     selectDateHandler,
     goToday,
+    handleViewMode,
   } = useCalendar({
     currentDay: new Date(currentDay),
     events,
@@ -63,6 +63,7 @@ const Calendar = ({
     mode,
     startHour,
     endHour,
+    onChangeMode,
   })
 
   const View = VIEW_MODES[viewMode]
@@ -115,7 +116,7 @@ const Calendar = ({
           <DropDown
             list={Object.values(Views)}
             value={viewMode}
-            onChange={mode => setViewMode(mode as ViewsT)}
+            onChange={handleViewMode}
             dropdownArrow={dropDownArrow}
           />
         </div>
