@@ -22,6 +22,7 @@ export const useCalendar = ({
   mode,
   startHour,
   endHour,
+  onChangeMode,
 }: UseCalendarProps) => {
   const [viewMode, setViewMode] = useState<ViewsT>(mode)
   const [currentDate, setCurrentDate] = useState<Date>(currentDay)
@@ -85,6 +86,11 @@ export const useCalendar = ({
     setCurrentDate(date)
   }, [])
 
+  const handleViewMode = (mode: ViewsT) => {
+    setViewMode(mode)
+    onChangeMode(mode)
+  }
+
   return {
     viewMode,
     startDate,
@@ -94,10 +100,10 @@ export const useCalendar = ({
     renderRows,
     isDisabledNext,
     isDisabledPrevious,
-    setViewMode,
     next,
     previous,
     goToday,
     selectDateHandler,
+    handleViewMode,
   }
 }

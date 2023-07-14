@@ -35,6 +35,7 @@ export type CalendarProps = Partial<UserEvents<EventT>> &
     dropDownArrow?: ReactNode
     renderEventComponent?: FunctionComponent<EventComponentProps>
     onChangeDate?: (start: Date, end: Date) => void
+    onChangeMode?: (mode: ViewsT) => void
   }
 
 export type UseCalendarProps = {
@@ -45,6 +46,7 @@ export type UseCalendarProps = {
   startHour: number
   endHour: number
   onChangeDate: (start: Date, end: Date) => void
+  onChangeMode: (mode: ViewsT) => void
 }
 
 export type HoursColumnT = {

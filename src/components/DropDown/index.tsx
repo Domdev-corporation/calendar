@@ -4,12 +4,12 @@ import Button from '../../features/Button'
 import { useDropDown } from './useDropDown'
 import { DropDownProps } from './types'
 
-const DropDown = ({
+const DropDown = <T extends string>({
   onChange,
   value,
   list,
   dropdownArrow,
-}: DropDownProps): JSX.Element => {
+}: DropDownProps<T>): JSX.Element => {
   const { isShowDropdown, dropDownRef, handleIsShowDropdown } = useDropDown()
 
   return (
