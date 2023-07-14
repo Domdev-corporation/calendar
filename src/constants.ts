@@ -52,10 +52,12 @@ export enum MERIDIEM {
   AFTER_MIDDAY = 'PM',
 }
 
-export const HOUR_IN_MINUTES = 60
+export const MINUTES_IN_HOUR = 60
 
 export enum Views {
   DAY = 'Day',
   WEEK = 'Week',
   MONTH = 'Month',
 }
+
+export const ONE_MINUTE_IN_MILLISECONDS = 60 * 1000

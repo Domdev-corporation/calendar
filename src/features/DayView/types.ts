@@ -15,4 +15,6 @@ export type DayViewProps = UserEvents<DayCellType> &
     renderRows: DayRowsType[]
     selectedEvent?: string
     renderEventComponent?: FunctionComponent<EventComponentProps>
+    endHour: number
+    startHour: number
   }

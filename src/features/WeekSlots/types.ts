@@ -15,4 +15,6 @@ export type WeekSlotsProps = UserEvents<WeekCellType> &
     renderRows: WeekRowsType[]
     selectedEvent?: string
     renderEventComponent?: FunctionComponent<EventComponentProps>
+    endHour: number
+    startHour: number
   }

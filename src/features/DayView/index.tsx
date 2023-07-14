@@ -16,13 +16,18 @@ const DayView = ({
   renderEventComponent,
   eventModal,
   newEventModal,
+  endHour,
+  startHour,
 }: DayViewProps): JSX.Element => {
   return (
     <>
       <div className="header">
         <DayHeader day={startDate} />
       </div>
+
       <DaySlots
+        endHour={endHour}
+        startHour={startHour}
         eventModal={eventModal}
         newEventModal={newEventModal}
         day={startDate}

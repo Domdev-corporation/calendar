@@ -17,7 +17,6 @@
 .calendar {
   display: flex;
   flex-direction: column;
-  overflow-x: auto;
 }
 
 .header {

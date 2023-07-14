@@ -1,5 +1,6 @@
 import './styles.css'
 
+import { TimePicker } from '../TimePicker'
 import EventItem from '../EventItem'
 import EventContainer from '../EventContainer'
 import { checkSelected } from '../../helpers'
@@ -17,15 +18,17 @@ const DaySlots = ({
   renderEventComponent: Component = EventItem,
   eventModal,
   newEventModal,
+  endHour,
+  startHour,
 }: DaySlotsProps): JSX.Element => {
   const { onOpen, onClose } = useModals()
 
   return (
     <>
-      {renderRows.map(({ time, cells }) => (
+      {renderRows.map(({ time, cells }, rowIndex) => (
         <div className="row" key={time}>
           <div className="cell time">{time}</div>
-          {cells.map((events, index) => {
+          {cells.map(events => {
             return (
               <div
                 onClick={e => {
@@ -38,6 +41,9 @@ const DaySlots = ({
                 className="cell day-cell"
                 key="cell"
               >
+                {rowIndex ? null : (
+                  <TimePicker endHour={endHour} startHour={startHour} />
+                )}
                 {events.map(event => {
                   const isSelected = checkSelected(event.id, selectedEvent)
                   const eventIndex = eventsByDay.findIndex(

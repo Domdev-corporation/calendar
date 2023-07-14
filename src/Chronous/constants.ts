@@ -7,3 +7,7 @@ export const VIEW_MODES = {
   Day: DayView,
   Month: MonthView,
 }
+
+export const END_HOUR = 24
+
+export const START_HOUR = 0

@@ -20,6 +20,8 @@ const WeekView = ({
   selectDateHandler,
   eventModal,
   newEventModal,
+  endHour,
+  startHour,
 }: WeekViewProps): JSX.Element => {
   const weekDays = useMemo(() => getWeekDays(startDate), [startDate])
 
@@ -44,6 +46,8 @@ const WeekView = ({
       />
 
       <WeekSlots
+        endHour={endHour}
+        startHour={startHour}
         eventModal={eventModal}
         newEventModal={newEventModal}
         startDate={startDate}

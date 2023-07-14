@@ -1,6 +1,7 @@
+import { TimePicker } from '../TimePicker'
 import EventItem from '../EventItem'
 import EventContainer from '../EventContainer'
-import { checkSelected, getDateOfWeekday } from '../../helpers'
+import { checkDay, checkSelected, getDateOfWeekday } from '../../helpers'
 import { useModals } from '../../context/ModalContext/useModals'
 
 import { WeekSlotsProps } from './types'
@@ -15,68 +16,75 @@ const WeekSlots = ({
   renderEventComponent: Component = EventItem,
   eventModal,
   newEventModal,
+  endHour,
+  startHour,
 }: WeekSlotsProps): JSX.Element => {
   const { onOpen, onClose } = useModals()
 
   return (
     <>
-      {renderRows.map(({ time, cells }) => (
-        <div className="row" key={time}>
-          <div className="cell time">{time}</div>
-          {cells.map((events, index) => {
-            const dayEvents = eventsByDay[index]
+      {renderRows.map(({ time, cells }, rowIndex) => {
+        return (
+          <div className="row" key={time}>
+            <div className="cell time">{time}</div>
 
-            return (
-              <div
-                className="cell"
-                onClick={e => {
-                  const eventData = {
-                    time,
-                    day: getDateOfWeekday(index, startDate),
-                  }
-                  onClickCell(eventData)
+            {cells.map((events, index) => {
+              const dayEvents = eventsByDay[index]
 
-                  if (newEventModal)
-                    onOpen(e, newEventModal({ ...eventData, onClose }))
-                }}
-                key={`cell-${String(index)}`}
-              >
-                {events.map(event => {
-                  const isSelected = checkSelected(event.id, selectedEvent)
-                  const eventIndex = dayEvents.findIndex(
-                    day => day.id === event.id,
-                  )
+              return (
+                <div
+                  className="cell"
+                  onClick={e => {
+                    const eventData = {
+                      time,
+                      day: getDateOfWeekday(index, startDate),
+                    }
+                    onClickCell(eventData)
 
-                  return (
-                    <EventContainer
-                      onClick={e => {
-                        e.stopPropagation()
-                        onClickEvent(event)
+                    if (newEventModal)
+                      onOpen(e, newEventModal({ ...eventData, onClose }))
+                  }}
+                >
+                  {checkDay(index + 1) && !rowIndex ? (
+                    <TimePicker endHour={endHour} startHour={startHour} />
+                  ) : null}
+                  {events.map(event => {
+                    const isSelected = checkSelected(event.id, selectedEvent)
+                    const eventIndex = dayEvents.findIndex(
+                      day => day.id === event.id,
+                    )
 
-                        if (eventModal)
-                          onOpen(e, eventModal({ ...event, onClose }))
-                      }}
-                      key={event.id}
-                      index={eventIndex}
-                      overlapping={event?.overlapping}
-                      start={event.start}
-                      numberOfEvents={eventsByDay.length}
-                      duration={event?.duration}
-                      isSelected={isSelected}
-                    >
-                      <Component
-                        event={event}
+                    return (
+                      <EventContainer
+                        onClick={e => {
+                          e.stopPropagation()
+                          onClickEvent(event)
+
+                          if (eventModal)
+                            onOpen(e, eventModal({ ...event, onClose }))
+                        }}
+                        key={event.id}
+                        index={eventIndex}
+                        overlapping={event?.overlapping}
+                        start={event.start}
+                        numberOfEvents={eventsByDay.length}
+                        duration={event?.duration}
                         isSelected={isSelected}
-                        className="week-event"
-                      />
-                    </EventContainer>
-                  )
-                })}
-              </div>
-            )
-          })}
-        </div>
-      ))}
+                      >
+                        <Component
+                          event={event}
+                          isSelected={isSelected}
+                          className="week-event"
+                        />
+                      </EventContainer>
+                    )
+                  })}
+                </div>
+              )
+            })}
+          </div>
+        )
+      })}
     </>
   )
 }

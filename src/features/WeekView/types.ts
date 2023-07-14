@@ -17,4 +17,6 @@ export type WeekViewProps = UserEvents<WeekCellType> &
     selectDateHandler: (data: Date) => void
     selectedEvent?: string
     renderEventComponent?: FunctionComponent<EventComponentProps>
+    endHour: number
+    startHour: number
   }

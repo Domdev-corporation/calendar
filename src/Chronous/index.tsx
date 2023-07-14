@@ -19,7 +19,7 @@ import ChevronDown from '../components/ChevronDown'
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
 import { mockEvents } from './mockData'
-import { VIEW_MODES } from './constants'
+import { END_HOUR, START_HOUR, VIEW_MODES } from './constants'
 
 const Calendar = ({
   children,
@@ -27,8 +27,8 @@ const Calendar = ({
   nextButton,
   prevButton,
   config = [],
-  endHour = 24,
-  startHour = 1,
+  endHour = END_HOUR,
+  startHour = START_HOUR,
   selectedEvent,
   events = mockEvents,
   renderEventComponent,
@@ -121,6 +121,8 @@ const Calendar = ({
         </div>
         <div className="calendar">
           <View
+            endHour={endHour}
+            startHour={startHour}
             eventModal={eventModal}
             newEventModal={newEventModal}
             onClickCell={onClickCell}
