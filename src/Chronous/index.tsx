@@ -9,6 +9,7 @@ import { ModalProvider } from '../context/ModalContext'
 import { DateFormat, Devices, Views } from '../constants'
 import Text from '../components/Text'
 import RightArrow from '../components/RightArrow'
+import Plus from '../components/Plus'
 import { NavigationButton } from '../components/NavigationButton'
 import LeftArrow from '../components/LeftArrow'
 import Flex from '../components/Flex'
@@ -125,7 +126,7 @@ const Calendar = ({
               defaultButton={<RightArrow color={colors.teal} />}
             />
           </Flex>
-
+          <Plus />
           {!isMobileMode(deviceMode) && isWeekView(viewMode) ? (
             <Text className="current-date header-grid-date">
               {format(startDate, DateFormat.MONTH_LONG)}
