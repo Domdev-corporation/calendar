@@ -14,6 +14,7 @@ import {
   getNextDateRange,
   getStartDate,
   getEndDate,
+  isMobileMode,
 } from './helpers'
 
 export const useCalendar = ({
@@ -84,11 +85,16 @@ export const useCalendar = ({
     if (onChangeDate) onChangeDate(getStartOfWeek(now), getEndOfWeek(now))
   }, [onChangeDate])
 
-  const selectDateHandler = useCallback((date: Date) => {
+  const selectDateHandler = (date: Date) => {
     setSelectedDate(date)
-    setViewMode(Views.WEEK)
     setCurrentDate(date)
-  }, [])
+
+    if (isMobileMode(getMode(mode))) {
+      return setViewMode(Views.WEEK)
+    }
+
+    setViewMode(Views.DAY)
+  }
 
   const handleViewMode = (view: ViewsT) => {
     setViewMode(view)

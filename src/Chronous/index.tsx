@@ -18,7 +18,7 @@ import ChevronDown from '../components/ChevronDown'
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
 import { mockEvents } from './mockData'
-import { isMobileMode } from './helpers'
+import { isMobileMode, isWeekView } from './helpers'
 import { END_HOUR, START_HOUR, VIEW_MODES } from './constants'
 
 const Calendar = ({
@@ -82,10 +82,12 @@ const Calendar = ({
       >
         <div
           className={`header-grid ${
-            isMobileMode(deviceMode) ? 'header-grid_mobile' : ''
+            isMobileMode(deviceMode) && isWeekView(viewMode)
+              ? 'header-grid_mobile'
+              : ''
           }`}
         >
-          {isMobileMode(deviceMode) && (
+          {isMobileMode(deviceMode) && isWeekView(viewMode) ? (
             <Flex
               onClick={() => handleViewMode('Month')}
               className="header-grid__back-month"
@@ -94,7 +96,7 @@ const Calendar = ({
               <LeftArrow />
               <Text>{format(startDate, DateFormat.MONTH_LONG)}</Text>
             </Flex>
-          )}
+          ) : null}
 
           <Button
             ariaLabel="Today"
@@ -124,7 +126,7 @@ const Calendar = ({
             />
           </Flex>
 
-          {!isMobileMode(deviceMode) && (
+          {!isMobileMode(deviceMode) && isWeekView(viewMode) ? (
             <Text className="current-date header-grid-date">
               {format(startDate, DateFormat.MONTH_LONG)}
               {startDate.getMonth() !== endDate.getMonth() &&
@@ -132,7 +134,7 @@ const Calendar = ({
               {` `}
               {currentYear}
             </Text>
-          )}
+          ) : null}
 
           <DropDown
             list={Object.values(Views)}

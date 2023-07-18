@@ -9,14 +9,14 @@ import {
   ModalsT,
   ModesT,
   MonthCellType,
+  MonthRowsT,
   UserEvents,
   ViewsT,
   WeekCellType,
   WeekRowsType,
 } from '../types'
-import { Cell } from '../features/MonthSlots/types'
 
-export type CombinedViewRowsType = WeekRowsType[] & DayRowsType[] & Cell[]
+export type CombinedViewRowsType = WeekRowsType[] & DayRowsType[] & MonthRowsT[]
 
 type EventT = DayCellType | WeekCellType | MonthCellType
 

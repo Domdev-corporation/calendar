@@ -17,7 +17,7 @@ const WeekHeaderDesktop = ({
       {weekDays.map(day => {
         return (
           <div className="day" key={day.toLocaleString()}>
-            <div>{format(day, DateFormat.SHORT_DAY)}</div>
+            <div>{format(day, DateFormat.DAY_LONG)}</div>
             <div>
               <IconButton
                 onClick={() => onSelectDate(day)}

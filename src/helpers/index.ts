@@ -2,7 +2,13 @@ import { MouseEvent } from 'react'
 import { addDays, getDay, getHours, getMinutes, parse } from 'date-fns'
 import { format } from 'date-fns'
 
-import { CELL_HEIGHT, MINUTES_IN_HOUR, DateFormat } from '../constants'
+import {
+  CELL_HEIGHT,
+  MINUTES_IN_HOUR,
+  DateFormat,
+  WEEK_DAYS,
+  INDEX_OF_SUNDAY,
+} from '../constants'
 
 export const getStartPosition = (startDate: Date | string): number => {
   const minutes = format(addDays(new Date(startDate), 0), DateFormat.MINUTE)
@@ -68,7 +74,7 @@ export const checkDay = (index: number): boolean => {
 export const getWeekDayIndex = (date: Date): number => {
   const dayIndex = getDay(date)
 
-  return (dayIndex + 6) % 7
+  return (dayIndex + INDEX_OF_SUNDAY) % WEEK_DAYS
 }
 
 export const convertTo24HourFormat = (timeString: string): string => {

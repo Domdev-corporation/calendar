@@ -4,7 +4,7 @@ import { getScreenWidth } from '../helpers'
 
 export const configService = (config: ConfigT[]) => {
   const getSuitableParamsByScreen = (): ConfigT | undefined => {
-    return config.filter(({ maxWidth }) => getScreenWidth() > maxWidth)?.at(-1)
+    return config.filter(({ minWidth }) => getScreenWidth() > minWidth)?.at(-1)
   }
 
   const getView = (defaultView: ViewsT): ViewsT => {

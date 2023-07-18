@@ -28,7 +28,7 @@ const WeekHeaderMobile = ({
           return (
             <div className="week-day_mobile" key={day.toLocaleString()}>
               <div className={`${isWeekend(day) ? 'weekend' : ''}`}>
-                {format(day, DateFormat.DAY_LONG)}
+                {format(day, DateFormat.SHORT_DAY)}
               </div>
 
               <IconButton

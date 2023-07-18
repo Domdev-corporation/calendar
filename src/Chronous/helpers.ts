@@ -17,18 +17,16 @@ import {
 
 import {
   CalendarEventType,
-  ConfigT,
   DayRowsType,
   ModesT,
+  MonthRowsT,
   ViewsT,
   WeekRowsType,
 } from '../types'
-import { getScreenWidth } from '../helpers'
 import {
-  Cell,
   CreateCells,
   GenerateSlotsForDaysOfMonth,
-} from '../features/MonthSlots/types'
+} from '../features/MonthSlots/MonthSlotsDesktop/types'
 import { COUNT_CELLS } from '../features/MonthSlots/constants'
 import {
   DAY_IN_HOURS,
@@ -180,7 +178,7 @@ export const createCells = ({
   countCells,
   isCurrentMonth,
   daysInPrevMonth,
-}: CreateCells): Cell[] =>
+}: CreateCells): MonthRowsT[] =>
   Array.from({ length: countCells }, (_, day) => {
     return {
       date: new Date(
@@ -196,7 +194,7 @@ export const createCells = ({
 export const generateSlotsForDaysOfMonth = ({
   startDate,
   events,
-}: GenerateSlotsForDaysOfMonth): Cell[] => {
+}: GenerateSlotsForDaysOfMonth): MonthRowsT[] => {
   const currentDate = new Date(startDate)
 
   const currentMonth = currentDate.getMonth()
@@ -261,7 +259,7 @@ export const getRenderRows = (
   events: CalendarEventType[],
   startHour: number,
   endHour: number,
-): WeekRowsType[] | DayRowsType[] | Cell[] => {
+): WeekRowsType[] | DayRowsType[] | MonthRowsT[] => {
   const startDate = start.getTime()
   const endDate = end.getTime()
 
@@ -385,4 +383,8 @@ export const returnDayDate = (currentDate: Date, dayNumber: number): string => {
 
 export const isMobileMode = (mode: ModesT): boolean => {
   return mode === Devices.MOBILE
+}
+
+export const isWeekView = (view: ViewsT): boolean => {
+  return view === Views.WEEK
 }

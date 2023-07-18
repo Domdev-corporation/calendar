@@ -1,9 +1,11 @@
 import { format } from 'date-fns'
 
-import { DateFormat } from '../../constants'
-
-import { GetSlotAttributes, SlotAttributes } from './types'
-import { MAX_DISPLAYED_SLOTS } from './constants'
+import {
+  GetSlotAttributes,
+  SlotAttributes,
+} from '../../MonthSlots/MonthSlotsDesktop/types'
+import { MAX_DISPLAYED_SLOTS } from '../../MonthSlots/constants'
+import { DateFormat } from '../../../constants'
 
 export const getSlotAttributes = ({
   slot,

@@ -48,6 +48,12 @@ export type DayRowsType = {
   cells: DayCellType[][]
 }
 
+export type MonthRowsT = {
+  date: Date
+  isCurrentMonth: boolean
+  slots: CalendarEventType[]
+}
+
 type CellT = CalendarEventType & {
   duration?: Duration
 }
@@ -98,7 +104,7 @@ export type ModalsT<EventT> = {
 }
 
 export type ConfigT = {
-  maxWidth: number
+  minWidth: number
   mode?: ValueOF<Devices>
   view?: ViewsT
 }

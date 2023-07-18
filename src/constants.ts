@@ -78,3 +78,5 @@ export enum Devices {
   MOBILE = 'mobile',
   DESKTOP = 'desktop',
 }
+
+export const INDEX_OF_SUNDAY = 6

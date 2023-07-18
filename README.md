@@ -102,7 +102,7 @@ export const App = () => (
     <td>config</td>
     <td>Configuration array for the calendar view containers</td>
     <td>-</td>
-    <td>{maxWidth: number, view: "Day" | "Week" | "Month"}[]</td>
+    <td>{minWidth: number, view: "Day" | "Week" | "Month"}[]</td>
   </tr>
   <tr>
     <td>startHour</td>
@@ -169,7 +169,7 @@ To change the order of the elements, edit this style: grid-template-areas: 'toda
 
 .modal-cross - styles the cross button in the modal with other events
 
-.month-cell--mobile - styles the container that wraps events in the mobile view of the monthly calendar
+.month-cell_mobile - styles the container that wraps events in the mobile view of the monthly calendar
 
 .weekend - styles the weekends in the monthly calendar in the mobile view
 
