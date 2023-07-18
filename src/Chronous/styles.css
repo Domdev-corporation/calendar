@@ -128,11 +128,18 @@
   display: grid;
   grid-template-columns: repeat(3, max-content);
   grid-template-areas:
-    'back_month today arrows'
-    'dropdown date .';
+    'today date arrows'
+    'dropdown . .';
   align-items: center;
   gap: 10px;
   font-size: 16px;
+}
+
+.header-grid_mobile {
+  grid-template-columns: repeat(4, max-content);
+  grid-template-areas:
+    'back_month today date arrows'
+    'dropdown . . .';
 }
 
 .header-grid-today {
@@ -144,7 +151,7 @@
   justify-self: center;
 }
 .header-grid-date {
-  justify-self: center;
+  justify-self: left;
   grid-area: date;
   text-align: center;
 }

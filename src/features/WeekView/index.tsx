@@ -1,14 +1,11 @@
 import { memo, useMemo } from 'react'
 import { format } from 'date-fns'
 
-import WeekSlotsMobile from '../WeekSlotsMobile'
-import WeekSlots from '../WeekSlots'
-import WeekHeaderMobile from '../WeekHeaderMobile'
-import WeekHeader from '../WeekHeader'
 import { DateFormat } from '../../constants'
 
 import { WeekViewProps } from './types'
 import { getWeekDays } from './helpers'
+import { WeekHeaders, WeekSlots } from './constants'
 
 const WeekView = ({
   events,
@@ -24,6 +21,7 @@ const WeekView = ({
   newEventModal,
   endHour,
   startHour,
+  deviceMode,
 }: WeekViewProps): JSX.Element => {
   const weekDays = useMemo(() => getWeekDays(startDate), [startDate])
 
@@ -39,16 +37,19 @@ const WeekView = ({
     [events, weekDays],
   )
 
+  const Week = WeekSlots[deviceMode]
+  const Header = WeekHeaders[deviceMode]
+
   return (
     <>
-      <WeekHeaderMobile
+      <Header
         weekDays={weekDays}
         selectedDay={selectedDate}
         onSelectDate={selectDateHandler}
-        formatOfDay="SHORT_DAY"
       />
 
-      <WeekSlotsMobile
+      <Week
+        startDate={startDate}
         selectedDate={selectedDate}
         endHour={endHour}
         startHour={startHour}
@@ -61,20 +62,6 @@ const WeekView = ({
         onClickEvent={onClickEvent}
         renderEventComponent={renderEventComponent}
       />
-      {/* 
-      <WeekSlots
-        endHour={endHour}
-        startHour={startHour}
-        eventModal={eventModal}
-        newEventModal={newEventModal}
-        startDate={startDate}
-        onClickCell={onClickCell}
-        eventsByDay={eventsByDay}
-        selectedEvent={selectedEvent}
-        renderRows={renderRows}
-        onClickEvent={onClickEvent}
-        renderEventComponent={renderEventComponent}
-      /> */}
     </>
   )
 }

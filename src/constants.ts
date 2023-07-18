@@ -73,3 +73,8 @@ export enum Views {
 }
 
 export const ONE_MINUTE_IN_MILLISECONDS = 60 * 1000
+
+export enum Devices {
+  MOBILE = 'mobile',
+  DESKTOP = 'desktop',
+}

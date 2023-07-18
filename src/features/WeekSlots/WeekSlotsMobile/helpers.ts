@@ -1,5 +1,5 @@
-import { WeekCellType } from '../../types'
-import { getWeekDayIndex } from '../../helpers'
+import { WeekCellType } from '../../../types'
+import { getWeekDayIndex } from '../../../helpers'
 
 export const handleDayEvents = (
   daysEvents: WeekCellType[][],

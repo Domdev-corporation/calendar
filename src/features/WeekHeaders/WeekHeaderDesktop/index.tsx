@@ -1,17 +1,15 @@
 import { memo } from 'react'
 import { format, isSameDay } from 'date-fns'
 
-import colors from '../../theme/colors'
-import { DateFormat } from '../../constants'
-import IconButton from '../../components/IconButton'
+import { WeekHeaderProps } from '../types'
+import colors from '../../../theme/colors'
+import { DateFormat } from '../../../constants'
+import IconButton from '../../../components/IconButton'
 
-import { WeekHeaderProps } from './types'
-
-const WeekHeader = ({
+const WeekHeaderDesktop = ({
   weekDays,
   selectedDay,
   onSelectDate,
-  formatOfDay = 'DAY_LONG',
 }: WeekHeaderProps): JSX.Element => {
   return (
     <div className="header">
@@ -19,7 +17,7 @@ const WeekHeader = ({
       {weekDays.map(day => {
         return (
           <div className="day" key={day.toLocaleString()}>
-            <div>{format(day, DateFormat[formatOfDay])}</div>
+            <div>{format(day, DateFormat.SHORT_DAY)}</div>
             <div>
               <IconButton
                 onClick={() => onSelectDate(day)}
@@ -44,4 +42,4 @@ const WeekHeader = ({
   )
 }
 
-export default memo(WeekHeader)
+export default memo(WeekHeaderDesktop)

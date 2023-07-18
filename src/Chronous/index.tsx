@@ -6,7 +6,7 @@ import { format } from 'date-fns'
 import colors from '../theme/colors'
 import Button from '../features/Button'
 import { ModalProvider } from '../context/ModalContext'
-import { DateFormat, Views } from '../constants'
+import { DateFormat, Devices, Views } from '../constants'
 import Text from '../components/Text'
 import RightArrow from '../components/RightArrow'
 import { NavigationButton } from '../components/NavigationButton'
@@ -18,6 +18,7 @@ import ChevronDown from '../components/ChevronDown'
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
 import { mockEvents } from './mockData'
+import { isMobileMode } from './helpers'
 import { END_HOUR, START_HOUR, VIEW_MODES } from './constants'
 
 const Calendar = ({
@@ -31,7 +32,8 @@ const Calendar = ({
   selectedEvent,
   events = mockEvents,
   renderEventComponent,
-  mode = Views.WEEK,
+  view = Views.WEEK,
+  mode = Devices.DESKTOP,
   currentDay = new Date(),
   dropDownArrow = <ChevronDown />,
   onClickEvent = () => {},
@@ -39,7 +41,7 @@ const Calendar = ({
   onChangeDate = () => {},
   eventModal,
   newEventModal,
-  onChangeMode = () => {},
+  onChangeView = () => {},
 }: CalendarProps): JSX.Element => {
   const {
     viewMode,
@@ -55,15 +57,17 @@ const Calendar = ({
     selectDateHandler,
     goToday,
     handleViewMode,
+    deviceMode,
   } = useCalendar({
     currentDay: new Date(currentDay),
     events,
     onChangeDate,
     config,
-    mode,
+    view,
     startHour,
     endHour,
-    onChangeMode,
+    onChangeView,
+    mode,
   })
 
   const View = VIEW_MODES[viewMode]
@@ -76,15 +80,21 @@ const Calendar = ({
         spacing={16}
         sx={{ margin: 16 }}
       >
-        <div className="header-grid">
-          <Flex
-            onClick={() => handleViewMode('Month')}
-            className="header-grid__back-month"
-            align="center"
-          >
-            <LeftArrow />
-            <Text>{format(startDate, DateFormat.MONTH_LONG)}</Text>
-          </Flex>
+        <div
+          className={`header-grid ${
+            isMobileMode(deviceMode) ? 'header-grid_mobile' : ''
+          }`}
+        >
+          {isMobileMode(deviceMode) && (
+            <Flex
+              onClick={() => handleViewMode('Month')}
+              className="header-grid__back-month"
+              align="center"
+            >
+              <LeftArrow />
+              <Text>{format(startDate, DateFormat.MONTH_LONG)}</Text>
+            </Flex>
+          )}
 
           <Button
             ariaLabel="Today"
@@ -114,13 +124,15 @@ const Calendar = ({
             />
           </Flex>
 
-          {/* <Text className="current-date header-grid-date">
-            {format(startDate, DateFormat.MONTH_LONG)}
-            {startDate.getMonth() !== endDate.getMonth() &&
-              `-${format(endDate, DateFormat.MONTH_LONG)}`}
-            {` `}
-            {currentYear}
-          </Text> */}
+          {!isMobileMode(deviceMode) && (
+            <Text className="current-date header-grid-date">
+              {format(startDate, DateFormat.MONTH_LONG)}
+              {startDate.getMonth() !== endDate.getMonth() &&
+                `-${format(endDate, DateFormat.MONTH_LONG)}`}
+              {` `}
+              {currentYear}
+            </Text>
+          )}
 
           <DropDown
             list={Object.values(Views)}
@@ -131,6 +143,7 @@ const Calendar = ({
         </div>
         <div className="calendar">
           <View
+            deviceMode={deviceMode}
             endHour={endHour}
             startHour={startHour}
             eventModal={eventModal}

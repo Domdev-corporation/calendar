@@ -19,6 +19,7 @@ import {
   CalendarEventType,
   ConfigT,
   DayRowsType,
+  ModesT,
   ViewsT,
   WeekRowsType,
 } from '../types'
@@ -36,6 +37,7 @@ import {
   DateFormat,
   daysOfWeek,
   Views,
+  Devices,
 } from '../constants'
 
 import { HoursColumnT, RowsInfoT, DateRangeT } from './types'
@@ -381,13 +383,6 @@ export const returnDayDate = (currentDate: Date, dayNumber: number): string => {
   return targetDate.toISOString().substring(0, 10)
 }
 
-export const getModeFromConfig = (
-  config: ConfigT[],
-  defaultMode: ViewsT,
-): ViewsT => {
-  const suitableWidths = config.filter(
-    ({ maxWidth }) => getScreenWidth() > maxWidth,
-  )
-
-  return suitableWidths.at(-1)?.mode || defaultMode
+export const isMobileMode = (mode: ModesT): boolean => {
+  return mode === Devices.MOBILE
 }

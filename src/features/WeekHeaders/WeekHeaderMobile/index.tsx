@@ -2,20 +2,19 @@ import { memo } from 'react'
 import { format, isSameDay, isWeekend } from 'date-fns'
 
 import './styles.css'
-import colors from '../../theme/colors'
-import { DateFormat } from '../../constants'
-import Text from '../../components/Text'
-import IconButton from '../../components/IconButton'
-import Flex from '../../components/Flex'
+import { WeekHeaderProps } from '../types'
+import colors from '../../../theme/colors'
+import { DateFormat } from '../../../constants'
+import Text from '../../../components/Text'
+import IconButton from '../../../components/IconButton'
+import Flex from '../../../components/Flex'
 
-import { WeekHeaderProps } from './types'
 import { convertDateToMobileFormat } from './helpers'
 
-const WeekHeader = ({
+const WeekHeaderMobile = ({
   weekDays,
   selectedDay,
   onSelectDate,
-  formatOfDay = 'DAY_LONG',
 }: WeekHeaderProps): JSX.Element => {
   return (
     <Flex
@@ -29,7 +28,7 @@ const WeekHeader = ({
           return (
             <div className="week-day_mobile" key={day.toLocaleString()}>
               <div className={`${isWeekend(day) ? 'weekend' : ''}`}>
-                {format(day, DateFormat[formatOfDay])}
+                {format(day, DateFormat.DAY_LONG)}
               </div>
 
               <IconButton
@@ -60,4 +59,4 @@ const WeekHeader = ({
   )
 }
 
-export default memo(WeekHeader)
+export default memo(WeekHeaderMobile)

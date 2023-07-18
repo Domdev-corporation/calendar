@@ -1,11 +1,11 @@
-import { TimePicker } from '../TimePicker'
-import EventItem from '../EventItem'
-import EventContainer from '../EventContainer'
-import { checkSelected, convertTo24HourFormat } from '../../helpers'
-import { useModals } from '../../context/ModalContext/useModals'
+import { TimePicker } from '../../TimePicker'
+import EventItem from '../../EventItem'
+import EventContainer from '../../EventContainer'
+import { checkSelected, convertTo24HourFormat } from '../../../helpers'
+import { useModals } from '../../../context/ModalContext/useModals'
 
 import './styles.css'
-import { WeekSlotsProps } from './types'
+import { WeekSlotsMobileProps } from './types'
 import { getEventIndexOfDay, handleDayEvents } from './helpers'
 
 const WeekSlotsMobile = ({
@@ -20,7 +20,7 @@ const WeekSlotsMobile = ({
   endHour,
   startHour,
   selectedDate,
-}: WeekSlotsProps): JSX.Element => {
+}: WeekSlotsMobileProps): JSX.Element => {
   const { onOpen, onClose } = useModals()
 
   return (

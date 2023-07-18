@@ -10,8 +10,7 @@ import {
 
 export type WeekSlotsProps = UserEvents<WeekCellType> &
   ModalsT<WeekCellType> & {
-    startDate: Date
-    eventsByDay: WeekCellType[][]
+    eventsByWeek: WeekCellType[][]
     renderRows: WeekRowsType[]
     selectedEvent?: string
     renderEventComponent?: FunctionComponent<EventComponentProps>

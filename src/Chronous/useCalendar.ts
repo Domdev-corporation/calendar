@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { addDays, subDays, isBefore, isAfter } from 'date-fns'
 
 import { ViewsT } from '../types'
+import { configService } from '../services/configService'
 import { DAYS_IN_YEAR, Views } from '../constants'
 
 import { UseCalendarProps } from './types'
@@ -19,12 +20,15 @@ export const useCalendar = ({
   currentDay,
   events = [],
   onChangeDate = () => {},
-  mode,
+  view,
   startHour,
   endHour,
-  onChangeMode,
+  onChangeView,
+  config,
+  mode,
 }: UseCalendarProps) => {
-  const [viewMode, setViewMode] = useState<ViewsT>(mode)
+  const { getView, getMode } = configService(config)
+  const [viewMode, setViewMode] = useState<ViewsT>(getView(view))
   const [currentDate, setCurrentDate] = useState<Date>(currentDay)
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 
@@ -86,9 +90,9 @@ export const useCalendar = ({
     setCurrentDate(date)
   }, [])
 
-  const handleViewMode = (mode: ViewsT) => {
-    setViewMode(mode)
-    onChangeMode(mode)
+  const handleViewMode = (view: ViewsT) => {
+    setViewMode(view)
+    onChangeView(view)
   }
 
   return {
@@ -105,5 +109,6 @@ export const useCalendar = ({
     goToday,
     selectDateHandler,
     handleViewMode,
+    deviceMode: getMode(mode),
   }
 }
