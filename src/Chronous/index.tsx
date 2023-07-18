@@ -77,6 +77,15 @@ const Calendar = ({
         sx={{ margin: 16 }}
       >
         <div className="header-grid">
+          <Flex
+            onClick={() => handleViewMode('Month')}
+            className="header-grid__back-month"
+            align="center"
+          >
+            <LeftArrow />
+            <Text>{format(startDate, DateFormat.MONTH_LONG)}</Text>
+          </Flex>
+
           <Button
             ariaLabel="Today"
             onClick={goToday}
@@ -105,13 +114,13 @@ const Calendar = ({
             />
           </Flex>
 
-          <Text className="current-date header-grid-date">
+          {/* <Text className="current-date header-grid-date">
             {format(startDate, DateFormat.MONTH_LONG)}
             {startDate.getMonth() !== endDate.getMonth() &&
               `-${format(endDate, DateFormat.MONTH_LONG)}`}
             {` `}
             {currentYear}
-          </Text>
+          </Text> */}
 
           <DropDown
             list={Object.values(Views)}

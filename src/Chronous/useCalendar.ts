@@ -82,7 +82,7 @@ export const useCalendar = ({
 
   const selectDateHandler = useCallback((date: Date) => {
     setSelectedDate(date)
-    setViewMode(Views.DAY)
+    setViewMode(Views.WEEK)
     setCurrentDate(date)
   }, [])
 

@@ -11,7 +11,7 @@ const WeekHeader = ({
   weekDays,
   selectedDay,
   onSelectDate,
-  formatOfDay = DateFormat.DAY_LONG,
+  formatOfDay = 'DAY_LONG',
 }: WeekHeaderProps): JSX.Element => {
   return (
     <div className="header">
@@ -19,7 +19,7 @@ const WeekHeader = ({
       {weekDays.map(day => {
         return (
           <div className="day" key={day.toLocaleString()}>
-            <div>{format(day, formatOfDay)}</div>
+            <div>{format(day, DateFormat[formatOfDay])}</div>
             <div>
               <IconButton
                 onClick={() => onSelectDate(day)}

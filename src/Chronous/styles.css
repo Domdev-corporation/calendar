@@ -128,8 +128,8 @@
   display: grid;
   grid-template-columns: repeat(3, max-content);
   grid-template-areas:
-    'today arrows date'
-    'dropdown . .';
+    'back_month today arrows'
+    'dropdown date .';
   align-items: center;
   gap: 10px;
   font-size: 16px;
@@ -154,10 +154,14 @@
   grid-area: dropdown;
 }
 
+.header-grid__back-month {
+  grid-area: back_month;
+}
+
 @media (min-width: 480px) {
   .header-grid {
     grid-template-columns: repeat(3, auto) 1fr;
-    grid-template-areas: 'today arrows date dropdown';
+    grid-template-areas: 'back_month today arrows date dropdown';
     gap: 15px;
   }
 

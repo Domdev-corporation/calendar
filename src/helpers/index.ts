@@ -1,5 +1,5 @@
 import { MouseEvent } from 'react'
-import { addDays, getDay, getHours, getMinutes } from 'date-fns'
+import { addDays, getDay, getHours, getMinutes, parse } from 'date-fns'
 import { format } from 'date-fns'
 
 import { CELL_HEIGHT, MINUTES_IN_HOUR, DateFormat } from '../constants'
@@ -63,4 +63,17 @@ export const checkDay = (index: number): boolean => {
   const currentDayIndex = getDay(currentDate)
 
   return index === currentDayIndex
+}
+
+export const getWeekDayIndex = (date: Date): number => {
+  const dayIndex = getDay(date)
+
+  return (dayIndex + 6) % 7
+}
+
+export const convertTo24HourFormat = (timeString: string): string => {
+  const parsedTime = parse(timeString, DateFormat.TIME_STAMP, new Date())
+  const formattedTime = format(parsedTime, DateFormat.HOUR_AND_MINUTE)
+
+  return formattedTime
 }
