@@ -94,7 +94,7 @@ export const App = () => (
   </tr>
   <tr>
     <td>onChangeView</td>
-    <td>Function to handle view view change</td>
+    <td>Function to handle view change</td>
     <td>-</td>
     <td>(view: "Day" | "Week" | "Month") => void</td>
   </tr>
