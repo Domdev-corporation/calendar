@@ -1,22 +1,15 @@
-import { format } from 'date-fns'
+import { ShortDayNames } from '../../constants'
+import Text from '../../components/Text'
+import Flex from '../../components/Flex'
+import './styles.css'
 
-import { DateFormat } from '../../constants'
-
-import { MonthHeaderProps } from './types'
-
-const MonthHeader = ({
-  slotsFirstDateInList,
-}: MonthHeaderProps): JSX.Element => {
-  const startDate = new Date(slotsFirstDateInList)
-  const endDate = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0)
-
-  const startMonth = format(startDate, DateFormat.MONTH_LONG)
-  const endMonth = format(endDate, DateFormat.MONTH_LONG)
-
+const MonthHeader = (): JSX.Element => {
   return (
-    <div className="monthHeader">
-      {startMonth !== endMonth && <div>- {endMonth}</div>}
-    </div>
+    <Flex justify="space-around" className="month-header-mobile">
+      {Object.values(ShortDayNames).map(day => (
+        <Text>{day}</Text>
+      ))}
+    </Flex>
   )
 }
 

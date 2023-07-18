@@ -7,21 +7,23 @@ import {
   DayRowsType,
   EventComponentProps,
   ModalsT,
+  ModesT,
   MonthCellType,
+  MonthRowsT,
   UserEvents,
   ViewsT,
   WeekCellType,
   WeekRowsType,
 } from '../types'
-import { Cell } from '../features/MonthSlots/types'
 
-export type CombinedViewRowsType = WeekRowsType[] & DayRowsType[] & Cell[]
+export type CombinedViewRowsType = WeekRowsType[] & DayRowsType[] & MonthRowsT[]
 
 type EventT = DayCellType | WeekCellType | MonthCellType
 
 export type CalendarProps = Partial<UserEvents<EventT>> &
   ModalsT<EventT> & {
-    mode?: ViewsT
+    view?: ViewsT
+    mode?: ModesT
     endHour?: number
     config?: ConfigT[]
     children?: ReactNode
@@ -35,18 +37,19 @@ export type CalendarProps = Partial<UserEvents<EventT>> &
     dropDownArrow?: ReactNode
     renderEventComponent?: FunctionComponent<EventComponentProps>
     onChangeDate?: (start: Date, end: Date) => void
-    onChangeMode?: (mode: ViewsT) => void
+    onChangeView?: (view: ViewsT) => void
   }
 
 export type UseCalendarProps = {
   currentDay: Date
   events: CalendarEventType[]
   config: ConfigT[]
-  mode: ViewsT
+  view: ViewsT
+  mode: ModesT
   startHour: number
   endHour: number
   onChangeDate: (start: Date, end: Date) => void
-  onChangeMode: (mode: ViewsT) => void
+  onChangeView: (view: ViewsT) => void
 }
 
 export type HoursColumnT = {

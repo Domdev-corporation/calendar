@@ -1,7 +1,7 @@
 import { CSSProperties, ReactNode } from 'react'
 import { Duration } from 'date-fns'
 
-import { IconSizes, Views } from './constants'
+import { Devices, IconSizes, Views } from './constants'
 
 export type ReactChildrenT = {
   children: ReactNode
@@ -46,6 +46,12 @@ export type WeekRowsType = {
 export type DayRowsType = {
   time: string
   cells: DayCellType[][]
+}
+
+export type MonthRowsT = {
+  date: Date
+  isCurrentMonth: boolean
+  slots: CalendarEventType[]
 }
 
 type CellT = CalendarEventType & {
@@ -98,8 +104,11 @@ export type ModalsT<EventT> = {
 }
 
 export type ConfigT = {
-  maxWidth: number
-  mode: ViewsT
+  minWidth: number
+  mode?: ValueOF<Devices>
+  view?: ViewsT
 }
 
 export type ViewsT = ValueOF<Views>
+
+export type ModesT = ValueOF<Devices>

@@ -3,6 +3,7 @@ import { FunctionComponent } from 'react'
 import {
   EventComponentProps,
   ModalsT,
+  ModesT,
   UserEvents,
   WeekCellType,
   WeekRowsType,
@@ -19,4 +20,5 @@ export type WeekViewProps = UserEvents<WeekCellType> &
     renderEventComponent?: FunctionComponent<EventComponentProps>
     endHour: number
     startHour: number
+    deviceMode: ModesT
   }

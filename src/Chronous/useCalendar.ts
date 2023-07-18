@@ -2,6 +2,7 @@ import { useCallback, useMemo, useState } from 'react'
 import { addDays, subDays, isBefore, isAfter } from 'date-fns'
 
 import { ViewsT } from '../types'
+import { configService } from '../services/configService'
 import { DAYS_IN_YEAR, Views } from '../constants'
 
 import { UseCalendarProps } from './types'
@@ -13,18 +14,22 @@ import {
   getNextDateRange,
   getStartDate,
   getEndDate,
+  isMobileMode,
 } from './helpers'
 
 export const useCalendar = ({
   currentDay,
   events = [],
   onChangeDate = () => {},
-  mode,
+  view,
   startHour,
   endHour,
-  onChangeMode,
+  onChangeView,
+  config,
+  mode,
 }: UseCalendarProps) => {
-  const [viewMode, setViewMode] = useState<ViewsT>(mode)
+  const { getView, getMode } = configService(config)
+  const [viewMode, setViewMode] = useState<ViewsT>(getView(view))
   const [currentDate, setCurrentDate] = useState<Date>(currentDay)
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
 
@@ -80,15 +85,20 @@ export const useCalendar = ({
     if (onChangeDate) onChangeDate(getStartOfWeek(now), getEndOfWeek(now))
   }, [onChangeDate])
 
-  const selectDateHandler = useCallback((date: Date) => {
+  const selectDateHandler = (date: Date) => {
     setSelectedDate(date)
-    setViewMode(Views.DAY)
     setCurrentDate(date)
-  }, [])
 
-  const handleViewMode = (mode: ViewsT) => {
-    setViewMode(mode)
-    onChangeMode(mode)
+    if (isMobileMode(getMode(mode))) {
+      return setViewMode(Views.WEEK)
+    }
+
+    setViewMode(Views.DAY)
+  }
+
+  const handleViewMode = (view: ViewsT) => {
+    setViewMode(view)
+    onChangeView(view)
   }
 
   return {
@@ -105,5 +115,6 @@ export const useCalendar = ({
     goToday,
     selectDateHandler,
     handleViewMode,
+    deviceMode: getMode(mode),
   }
 }

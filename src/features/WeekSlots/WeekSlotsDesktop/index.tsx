@@ -1,14 +1,14 @@
-import { TimePicker } from '../TimePicker'
-import EventItem from '../EventItem'
-import EventContainer from '../EventContainer'
-import { checkDay, checkSelected, getDateOfWeekday } from '../../helpers'
-import { useModals } from '../../context/ModalContext/useModals'
+import { TimePicker } from '../../TimePicker'
+import EventItem from '../../EventItem'
+import EventContainer from '../../EventContainer'
+import { checkDay, checkSelected, getDateOfWeekday } from '../../../helpers'
+import { useModals } from '../../../context/ModalContext/useModals'
 
-import { WeekSlotsProps } from './types'
+import { WeekSlotsDesktopProps } from './types'
 
-const WeekSlots = ({
+const WeekSlotsDesktop = ({
   startDate,
-  eventsByDay,
+  eventsByWeek,
   renderRows,
   onClickEvent,
   onClickCell,
@@ -18,7 +18,7 @@ const WeekSlots = ({
   newEventModal,
   endHour,
   startHour,
-}: WeekSlotsProps): JSX.Element => {
+}: WeekSlotsDesktopProps): JSX.Element => {
   const { onOpen, onClose } = useModals()
 
   return (
@@ -29,7 +29,7 @@ const WeekSlots = ({
             <div className="cell time">{time}</div>
 
             {cells.map((events, index) => {
-              const dayEvents = eventsByDay[index]
+              const dayEvents = eventsByWeek[index]
 
               return (
                 <div
@@ -67,7 +67,7 @@ const WeekSlots = ({
                         index={eventIndex}
                         overlapping={event?.overlapping}
                         start={event.start}
-                        numberOfEvents={eventsByDay.length}
+                        numberOfEvents={eventsByWeek.length}
                         duration={event?.duration}
                         isSelected={isSelected}
                       >
@@ -89,4 +89,4 @@ const WeekSlots = ({
   )
 }
 
-export default WeekSlots
+export default WeekSlotsDesktop

@@ -15,26 +15,36 @@ export enum DaysOfTheWeek {
   SUN = 'Sunday',
 }
 
-export const SHORT_DAY_NAMES = ['M', 'T', 'W', 'T', 'F', 'S', 'S']
+export enum ShortDayNames {
+  MONDAY = 'M',
+  TUESDAY = 'T',
+  WEDNESDAY = 'W',
+  THURSDAY = 'T',
+  FRIDAY = 'F',
+  SATURDAY = 'S',
+  SUNDAY = 'S',
+}
 
 export const CELL_HEIGHT = 60
 
 export const OVERLAP_STEP = 8
 
-export const DateFormat = {
-  MONTH_LONG: 'LLLL',
-  MONTH_SHORT: 'LLL',
-  DAY_LONG: 'EEEE',
-  DAY_NUMBER: 'dd',
-  HOUR: 'HH',
-  HOUR_AND_MINUTE: 'HH:mm',
-  MERIDIEM_TIME: 'hh:mm a',
-  TIME_STAMP: 'h:mm a',
-  MINUTE: 'mm',
-  YEAR_MONTH_DAY: 'yyyy-LLLL-dd',
-  DATE: 'yyyy-MM-dd',
-  DAY_OF_WEEK: 'EE',
-  HOUR_MERIDIEM: 'haaa',
+export enum DateFormat {
+  MONTH_LONG = 'LLLL',
+  MONTH_SHORT = 'LLL',
+  DAY_LONG = 'EEEE',
+  SHORT_DAY = 'EEEEE',
+  DAY_NUMBER = 'dd',
+  HOUR = 'HH',
+  HOUR_AND_MINUTE = 'HH:mm',
+  MERIDIEM_TIME = 'hh:mm a',
+  TIME_STAMP = 'h:mm aa',
+  MINUTE = 'mm',
+  YEAR_MONTH_DAY = 'yyyy-LLLL-dd',
+  DATE = 'yyyy-MM-dd',
+  DAY_OF_WEEK = 'EE',
+  HOUR_MERIDIEM = 'haaa',
+  DAYOFWEEK_DAY_MONTHNAME_YEAR = 'EEEE d MMMM yyyy',
 }
 
 export const DAYS_IN_YEAR = 365
@@ -63,3 +73,10 @@ export enum Views {
 }
 
 export const ONE_MINUTE_IN_MILLISECONDS = 60 * 1000
+
+export enum Devices {
+  MOBILE = 'mobile',
+  DESKTOP = 'desktop',
+}
+
+export const INDEX_OF_SUNDAY = 6

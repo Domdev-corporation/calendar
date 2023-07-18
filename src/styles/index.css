@@ -46,3 +46,11 @@ p {
 .current-day-button {
   background-color: var(--powder-blue);
 }
+
+.day-cell {
+  flex-basis: 100%;
+}
+
+.weekend {
+  color: var(--grey);
+}

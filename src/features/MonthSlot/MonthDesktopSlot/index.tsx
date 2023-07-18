@@ -1,16 +1,16 @@
 import { format, isSameDay } from 'date-fns'
 
-import { getSlotAttributes } from '../MonthSlots/helpers'
-import { MAX_DISPLAYED_SLOTS } from '../MonthSlots/constants'
-import MonthEventModal from '../MonthEventModal'
-import { MonthEvent } from '../MonthEvent'
-import Button from '../Button'
-import { DateFormat } from '../../constants'
+import { MAX_DISPLAYED_SLOTS } from '../../MonthSlots/constants'
+import MonthEventModal from '../../MonthEventModal'
+import { MonthEvent } from '../../MonthEvent'
+import Button from '../../Button'
+import { DateFormat } from '../../../constants'
 
 import { useMonthSlot } from './useMonthSlot'
-import { MonthSlotProps } from './types'
+import { MonthDesktopSlotProps } from './types'
+import { getSlotAttributes } from './helpers'
 
-export const MonthSlot = ({
+const MonthDesktopSlot = ({
   cell,
   index,
   onSelectDate,
@@ -19,7 +19,7 @@ export const MonthSlot = ({
   selectedDate,
   eventModal,
   newEventModal,
-}: MonthSlotProps): JSX.Element => {
+}: MonthDesktopSlotProps): JSX.Element => {
   const { date, isCurrentMonth, slots } = cell
 
   const {
@@ -43,7 +43,6 @@ export const MonthSlot = ({
         }
       }}
       className="cell month-cell"
-      key={date.toLocaleDateString() + index}
     >
       <div className="month-cell-week">
         {index < 7 && format(date, DateFormat.DAY_OF_WEEK)}
@@ -96,3 +95,5 @@ export const MonthSlot = ({
     </div>
   )
 }
+
+export default MonthDesktopSlot

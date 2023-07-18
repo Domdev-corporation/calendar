@@ -1,7 +1,10 @@
-import MonthSlots from '../MonthSlots'
-
 import './styles.css'
+
+import MonthHeader from '../MonthHeader'
+import { Devices } from '../../constants'
+
 import { MonthViewProps } from './types'
+import { MonthSlots } from './constants'
 
 const MonthView = ({
   selectDateHandler,
@@ -11,17 +14,24 @@ const MonthView = ({
   selectedDate,
   eventModal,
   newEventModal,
+  deviceMode,
 }: MonthViewProps): JSX.Element => {
+  const Month = MonthSlots[deviceMode]
+
   return (
-    <MonthSlots
-      eventModal={eventModal}
-      newEventModal={newEventModal}
-      renderRows={renderRows}
-      onSelectDate={selectDateHandler}
-      onClickEvent={onClickEvent}
-      onClickCell={onClickCell}
-      selectedDate={selectedDate}
-    />
+    <>
+      {deviceMode === Devices.MOBILE && <MonthHeader />}
+
+      <Month
+        eventModal={eventModal}
+        newEventModal={newEventModal}
+        renderRows={renderRows}
+        onSelectDate={selectDateHandler}
+        onClickEvent={onClickEvent}
+        onClickCell={onClickCell}
+        selectedDate={selectedDate}
+      />
+    </>
   )
 }
 

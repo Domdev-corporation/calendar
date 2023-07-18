@@ -17,17 +17,16 @@ import {
 
 import {
   CalendarEventType,
-  ConfigT,
   DayRowsType,
+  ModesT,
+  MonthRowsT,
   ViewsT,
   WeekRowsType,
 } from '../types'
-import { getScreenWidth } from '../helpers'
 import {
-  Cell,
   CreateCells,
   GenerateSlotsForDaysOfMonth,
-} from '../features/MonthSlots/types'
+} from '../features/MonthSlots/MonthSlotsDesktop/types'
 import { COUNT_CELLS } from '../features/MonthSlots/constants'
 import {
   DAY_IN_HOURS,
@@ -36,6 +35,7 @@ import {
   DateFormat,
   daysOfWeek,
   Views,
+  Devices,
 } from '../constants'
 
 import { HoursColumnT, RowsInfoT, DateRangeT } from './types'
@@ -178,7 +178,7 @@ export const createCells = ({
   countCells,
   isCurrentMonth,
   daysInPrevMonth,
-}: CreateCells): Cell[] =>
+}: CreateCells): MonthRowsT[] =>
   Array.from({ length: countCells }, (_, day) => {
     return {
       date: new Date(
@@ -194,7 +194,7 @@ export const createCells = ({
 export const generateSlotsForDaysOfMonth = ({
   startDate,
   events,
-}: GenerateSlotsForDaysOfMonth): Cell[] => {
+}: GenerateSlotsForDaysOfMonth): MonthRowsT[] => {
   const currentDate = new Date(startDate)
 
   const currentMonth = currentDate.getMonth()
@@ -259,7 +259,7 @@ export const getRenderRows = (
   events: CalendarEventType[],
   startHour: number,
   endHour: number,
-): WeekRowsType[] | DayRowsType[] | Cell[] => {
+): WeekRowsType[] | DayRowsType[] | MonthRowsT[] => {
   const startDate = start.getTime()
   const endDate = end.getTime()
 
@@ -381,13 +381,10 @@ export const returnDayDate = (currentDate: Date, dayNumber: number): string => {
   return targetDate.toISOString().substring(0, 10)
 }
 
-export const getModeFromConfig = (
-  config: ConfigT[],
-  defaultMode: ViewsT,
-): ViewsT => {
-  const suitableWidths = config.filter(
-    ({ maxWidth }) => getScreenWidth() > maxWidth,
-  )
+export const isMobileMode = (mode: ModesT): boolean => {
+  return mode === Devices.MOBILE
+}
 
-  return suitableWidths.at(-1)?.mode || defaultMode
+export const isWeekView = (view: ViewsT): boolean => {
+  return view === Views.WEEK
 }

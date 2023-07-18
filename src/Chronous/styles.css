@@ -128,11 +128,18 @@
   display: grid;
   grid-template-columns: repeat(3, max-content);
   grid-template-areas:
-    'today arrows date'
+    'today date arrows'
     'dropdown . .';
   align-items: center;
   gap: 10px;
   font-size: 16px;
+}
+
+.header-grid_mobile {
+  grid-template-columns: repeat(4, max-content);
+  grid-template-areas:
+    'back_month today date arrows'
+    'dropdown . . .';
 }
 
 .header-grid-today {
@@ -144,7 +151,7 @@
   justify-self: center;
 }
 .header-grid-date {
-  justify-self: center;
+  justify-self: left;
   grid-area: date;
   text-align: center;
 }
@@ -154,10 +161,14 @@
   grid-area: dropdown;
 }
 
+.header-grid__back-month {
+  grid-area: back_month;
+}
+
 @media (min-width: 480px) {
   .header-grid {
     grid-template-columns: repeat(3, auto) 1fr;
-    grid-template-areas: 'today arrows date dropdown';
+    grid-template-areas: 'back_month today arrows date dropdown';
     gap: 15px;
   }
 

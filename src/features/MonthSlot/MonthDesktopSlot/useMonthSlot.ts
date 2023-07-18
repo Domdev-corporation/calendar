@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react'
 
-import { useModals } from '../../context/ModalContext/useModals'
+import { useModals } from '../../../context/ModalContext/useModals'
 
 export const useMonthSlot = () => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)

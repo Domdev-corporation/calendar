@@ -69,7 +69,7 @@ export const App = () => (
     <td>{id: string; title: string; start: string; end: string; overlapping?: number; position?: string; number; width?: string; color?: string; textColor?: string; opacity?: number}[]</td>
   </tr>
   <tr>
-    <td>mode</td>
+    <td>view</td>
     <td>Specifies calendar view</td>
     <td><code>'Week'</code></td>
     <td>"Day" | "Week" | "Month"</td>
@@ -93,16 +93,16 @@ export const App = () => (
     <td>(start: Date, end: Date) => void</td>
   </tr>
   <tr>
-    <td>onChangeMode</td>
-    <td>Function to handle view mode change</td>
+    <td>onChangeView</td>
+    <td>Function to handle view change</td>
     <td>-</td>
-    <td>(mode: "Day" | "Week" | "Month") => void</td>
+    <td>(view: "Day" | "Week" | "Month") => void</td>
   </tr>
   <tr>
     <td>config</td>
     <td>Configuration array for the calendar view containers</td>
     <td>-</td>
-    <td>{maxWidth: number, mode: "Day" | "Week" | "Month"}[]</td>
+    <td>{minWidth: number, view: "Day" | "Week" | "Month"}[]</td>
   </tr>
   <tr>
     <td>startHour</td>
@@ -169,7 +169,7 @@ To change the order of the elements, edit this style: grid-template-areas: 'toda
 
 .modal-cross - styles the cross button in the modal with other events
 
-.month-cell--mobile - styles the container that wraps events in the mobile view of the monthly calendar
+.month-cell_mobile - styles the container that wraps events in the mobile view of the monthly calendar
 
 .weekend - styles the weekends in the monthly calendar in the mobile view
 
