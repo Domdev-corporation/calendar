@@ -129,7 +129,7 @@
   grid-template-columns: repeat(3, max-content);
   grid-template-areas:
     'today date arrows'
-    'dropdown . .';
+    'list_view dropdown .';
   align-items: center;
   gap: 10px;
   font-size: 16px;
@@ -139,7 +139,7 @@
   grid-template-columns: repeat(4, max-content);
   grid-template-areas:
     'back_month today date arrows'
-    'dropdown . . .';
+    'list_view dropdown . .';
 }
 
 .header-grid-today {
@@ -156,6 +156,11 @@
   text-align: center;
 }
 
+.header-grid-list {
+  grid-area: list_view;
+  justify-self: right;
+}
+
 .header-grid-dropdown {
   justify-self: left;
   grid-area: dropdown;
@@ -167,8 +172,8 @@
 
 @media (min-width: 480px) {
   .header-grid {
-    grid-template-columns: repeat(3, auto) 1fr;
-    grid-template-areas: 'back_month today arrows date dropdown';
+    grid-template-columns: repeat(4, auto) 1fr;
+    grid-template-areas: 'back_month today arrows date list_view dropdown';
     gap: 15px;
   }
 
