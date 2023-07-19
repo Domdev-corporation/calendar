@@ -4,6 +4,7 @@ import './styles.css'
 import { format } from 'date-fns'
 
 import colors from '../theme/colors'
+import CreateNewEvent from '../features/CreateNewEvent'
 import Button from '../features/Button'
 import { ModalProvider } from '../context/ModalContext'
 import { DateFormat, Devices, Views } from '../constants'
@@ -19,7 +20,6 @@ import ChevronDown from '../components/ChevronDown'
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
 import { mockEvents } from './mockData'
-import { isMobileMode, isWeekView } from './helpers'
 import { END_HOUR, START_HOUR, VIEW_MODES } from './constants'
 
 const Calendar = ({
@@ -45,7 +45,9 @@ const Calendar = ({
   onChangeView = () => {},
 }: CalendarProps): JSX.Element => {
   const {
+    isWeek,
     endDate,
+    isMobile,
     viewMode,
     startDate,
     deviceMode,
@@ -81,14 +83,8 @@ const Calendar = ({
         sx={{ margin: 16 }}
         className={className}
       >
-        <div
-          className={`header-grid ${
-            isMobileMode(deviceMode) && isWeekView(viewMode)
-              ? 'header-grid_mobile'
-              : ''
-          }`}
-        >
-          {isMobileMode(deviceMode) && isWeekView(viewMode) ? (
+        <div className={`header-grid ${isMobile ? 'header-grid_mobile' : ''}`}>
+          {isMobile && isWeek ? (
             <Flex
               align="center"
               className="header-grid__back-month"
@@ -126,8 +122,8 @@ const Calendar = ({
               onClick={next}
             />
           </Flex>
-
-          {!isMobileMode(deviceMode) && isWeekView(viewMode) ? (
+          {isMobile && <CreateNewEvent newEventModal={newEventModal} />}
+          {!isMobile && (
             <Text className="current-date header-grid-date">
               {format(startDate, DateFormat.MONTH_LONG)}
               {startDate.getMonth() !== endDate.getMonth() &&
@@ -135,18 +131,20 @@ const Calendar = ({
               {` `}
               {currentYear}
             </Text>
-          ) : null}
+          )}
 
           <Button ariaLabel="List icon" className="header-grid-list">
             <ListIcon />
           </Button>
 
-          <DropDown
-            value={viewMode}
-            list={Object.values(Views)}
-            dropdownArrow={dropDownArrow}
-            onChange={handleViewMode}
-          />
+          {!isMobile && (
+            <DropDown
+              list={Object.values(Views)}
+              value={viewMode}
+              onChange={handleViewMode}
+              dropdownArrow={dropDownArrow}
+            />
+          )}
         </div>
         <div className="calendar">
           <View

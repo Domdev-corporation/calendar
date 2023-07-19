@@ -15,6 +15,7 @@ import {
   getStartDate,
   getEndDate,
   isMobileMode,
+  isWeekView,
 } from './helpers'
 
 export const useCalendar = ({
@@ -116,5 +117,7 @@ export const useCalendar = ({
     selectDateHandler,
     handleViewMode,
     deviceMode: getMode(mode),
+    isMobile: isMobileMode(getMode(mode)),
+    isWeek: isWeekView(getView(view)),
   }
 }

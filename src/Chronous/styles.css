@@ -17,6 +17,7 @@
 .calendar {
   display: flex;
   flex-direction: column;
+  overflow-x: auto;
 }
 
 .header {
@@ -137,9 +138,7 @@
 
 .header-grid_mobile {
   grid-template-columns: repeat(4, max-content);
-  grid-template-areas:
-    'back_month today date arrows'
-    'list_view dropdown . .';
+  grid-template-areas: 'back_month today arrows list_view plus';
 }
 
 .header-grid-today {
@@ -170,10 +169,16 @@
   grid-area: back_month;
 }
 
+.header-grid__plus {
+  grid-area: plus;
+  justify-self: right;
+  cursor: pointer;
+}
+
 @media (min-width: 480px) {
   .header-grid {
-    grid-template-columns: repeat(4, auto) 1fr;
-    grid-template-areas: 'back_month today arrows date list_view dropdown';
+    grid-template-columns: repeat(3, auto) 1fr;
+    grid-template-areas: 'back_month today arrows date list_view plus dropdown';
     gap: 15px;
   }
 

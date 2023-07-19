@@ -94,7 +94,7 @@ type EventModalT<EventT> = EventT & {
   onClose: () => void
 }
 
-type NewEventModalT = OnClickCellT & {
+export type NewEventModalT = OnClickCellT & {
   onClose: () => void
 }
 
