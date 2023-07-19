@@ -28,8 +28,8 @@ const EventItem = ({
         <Text variant="caption">{event.title}</Text>
       </Flex>
       <Text variant="caption" sx={{ fontWeight: 'bold', marginTop: 8 }}>
-        {format(new Date(event.start), DateFormat.MERIDIEM_TIME)} -{' '}
-        {format(new Date(event.end), DateFormat.MERIDIEM_TIME)}
+        {format(new Date(event.start), DateFormat.TIME_STAMP)} -{' '}
+        {format(new Date(event.end), DateFormat.TIME_STAMP)}
       </Text>
     </Flex>
   )
