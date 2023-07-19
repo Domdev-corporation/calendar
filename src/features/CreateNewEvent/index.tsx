@@ -1,11 +1,9 @@
-import { ReactNode } from 'react'
 import { getHours } from 'date-fns'
 
-import { NewEventModalT } from '../../types'
 import { useModals } from '../../context/ModalContext/useModals'
 import Plus from '../../components/Plus'
 
-type CreateNewEventProps = { newEventModal?: (a: NewEventModalT) => ReactNode }
+import { CreateNewEventProps } from './types'
 
 const CreateNewEvent = ({
   newEventModal = () => null,
