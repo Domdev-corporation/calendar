@@ -4,12 +4,12 @@ import './styles.css'
 import { format } from 'date-fns'
 
 import colors from '../theme/colors'
+import CreateNewEvent from '../features/CreateNewEvent'
 import Button from '../features/Button'
 import { ModalProvider } from '../context/ModalContext'
 import { DateFormat, Devices, Views } from '../constants'
 import Text from '../components/Text'
 import RightArrow from '../components/RightArrow'
-import Plus from '../components/Plus'
 import { NavigationButton } from '../components/NavigationButton'
 import LeftArrow from '../components/LeftArrow'
 import Flex from '../components/Flex'
@@ -19,7 +19,6 @@ import ChevronDown from '../components/ChevronDown'
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
 import { mockEvents } from './mockData'
-import { isMobileMode, isWeekView } from './helpers'
 import { END_HOUR, START_HOUR, VIEW_MODES } from './constants'
 
 const Calendar = ({
@@ -59,6 +58,8 @@ const Calendar = ({
     goToday,
     handleViewMode,
     deviceMode,
+    isMobile,
+    isWeek,
   } = useCalendar({
     currentDay: new Date(currentDay),
     events,
@@ -81,14 +82,8 @@ const Calendar = ({
         spacing={16}
         sx={{ margin: 16 }}
       >
-        <div
-          className={`header-grid ${
-            isMobileMode(deviceMode) && isWeekView(viewMode)
-              ? 'header-grid_mobile'
-              : ''
-          }`}
-        >
-          {isMobileMode(deviceMode) && isWeekView(viewMode) ? (
+        <div className={`header-grid ${isMobile ? 'header-grid_mobile' : ''}`}>
+          {isMobile && isWeek ? (
             <Flex
               onClick={() => handleViewMode('Month')}
               className="header-grid__back-month"
@@ -126,8 +121,8 @@ const Calendar = ({
               defaultButton={<RightArrow color={colors.teal} />}
             />
           </Flex>
-          <Plus />
-          {!isMobileMode(deviceMode) && isWeekView(viewMode) ? (
+          {isMobile && <CreateNewEvent newEventModal={newEventModal} />}
+          {!isMobile && (
             <Text className="current-date header-grid-date">
               {format(startDate, DateFormat.MONTH_LONG)}
               {startDate.getMonth() !== endDate.getMonth() &&
@@ -135,14 +130,16 @@ const Calendar = ({
               {` `}
               {currentYear}
             </Text>
-          ) : null}
+          )}
 
-          <DropDown
-            list={Object.values(Views)}
-            value={viewMode}
-            onChange={handleViewMode}
-            dropdownArrow={dropDownArrow}
-          />
+          {!isMobile && (
+            <DropDown
+              list={Object.values(Views)}
+              value={viewMode}
+              onChange={handleViewMode}
+              dropdownArrow={dropDownArrow}
+            />
+          )}
         </div>
         <div className="calendar">
           <View

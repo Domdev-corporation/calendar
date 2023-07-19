@@ -6,6 +6,7 @@
 import ReactDOM from 'react-dom/client'
 import './styles/index.css'
 
+import { ModalProvider } from './context/ModalContext'
 import Chronous from './Chronous'
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
