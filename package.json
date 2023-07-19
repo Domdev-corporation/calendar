@@ -1,6 +1,6 @@
 {
   "name": "chronous",
-  "version": "0.0.9",
+  "version": "0.1.0",
   "license": "MIT",
   "author": "Maksym Tkachuk, Oleksandr Didyshen, Igor Kozlovskyi",
   "description": "Event Calendar written in TypeScript",
