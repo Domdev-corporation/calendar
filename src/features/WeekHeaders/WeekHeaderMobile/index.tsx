@@ -4,6 +4,7 @@ import { format, isSameDay, isWeekend } from 'date-fns'
 import './styles.css'
 import { WeekHeaderProps } from '../types'
 import colors from '../../../theme/colors'
+import { isCurrentDay } from '../../../helpers'
 import { DateFormat } from '../../../constants'
 import Text from '../../../components/Text'
 import IconButton from '../../../components/IconButton'
@@ -37,7 +38,7 @@ const WeekHeaderMobile = ({
                   width: '35px',
                   height: '35px',
                   fontSize: '16px',
-                  color: isSameDay(day, new Date()) ? colors.red : '',
+                  color: isCurrentDay(day) ? colors.red : '',
                 }}
                 hoverBG={colors.black}
                 className={`button ${

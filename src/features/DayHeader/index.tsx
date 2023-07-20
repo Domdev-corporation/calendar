@@ -2,6 +2,7 @@ import { memo } from 'react'
 import { format, isSameDay } from 'date-fns'
 
 import colors from '../../theme/colors'
+import { isCurrentDay } from '../../helpers'
 import { DateFormat } from '../../constants'
 import Text from '../../components/Text'
 import IconButton from '../../components/IconButton'
@@ -27,7 +28,7 @@ const DayHeader = ({
             width: 50,
             height: 50,
             fontSize: '2rem',
-            color: isSameDay(day, new Date()) ? colors.red : '',
+            color: isCurrentDay(day) ? colors.red : '',
           }}
           className="button current-day-button"
         >

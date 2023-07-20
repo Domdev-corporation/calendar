@@ -3,6 +3,7 @@ import { isSameDay, isWeekend } from 'date-fns'
 
 import { MonthSlotProps } from '../types'
 import colors from '../../../theme/colors'
+import { isCurrentDay } from '../../../helpers'
 import Text from '../../../components/Text'
 import IconButton from '../../../components/IconButton'
 import Flex from '../../../components/Flex'
@@ -24,7 +25,7 @@ const MonthMobileSlot = ({
           sx={{
             width: 30,
             height: 30,
-            color: isSameDay(date, new Date()) ? colors.red : '',
+            color: isCurrentDay(date) ? colors.red : '',
           }}
           className={`button  ${!isCurrentMonth ? 'mobile--other-month' : ''} ${
             isSameDay(date, selectedDate) ? 'current-day-button' : ''
