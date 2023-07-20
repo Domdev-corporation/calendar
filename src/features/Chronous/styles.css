@@ -122,7 +122,7 @@
 }
 
 .dropdown-item:hover {
-  background-color: var(--alise-blue);
+  background-color: var(--white-smoke);
 }
 
 .header-grid {
@@ -138,7 +138,7 @@
 
 .header-grid_mobile {
   grid-template-columns: repeat(3, auto) 1fr;
-  grid-template-areas: 'back_month today arrows  list_view plus';
+  grid-template-areas: 'back_month today arrows list_view plus';
 }
 
 .header-grid-today {
@@ -152,6 +152,7 @@
 .header-grid-date {
   justify-self: left;
   grid-area: date;
+  color: var(--red);
   text-align: center;
 }
 
@@ -167,6 +168,7 @@
 
 .header-grid__back-month {
   grid-area: back_month;
+  color: var(--red);
   cursor: pointer;
 }
 
@@ -174,6 +176,16 @@
   grid-area: plus;
   justify-self: right;
   cursor: pointer;
+}
+
+.footer {
+  z-index: 11;
+  position: sticky;
+  bottom: 0;
+  justify-content: center;
+  height: 40px;
+  width: 100%;
+  background-color: white;
 }
 
 @media (min-width: 480px) {

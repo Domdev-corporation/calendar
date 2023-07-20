@@ -1,5 +1,6 @@
 const colors = {
   white: '#FFFFFF',
+  black: '#000000',
   // PINK
   crimson: '#CC0056',
   pitchPuff: '#FFD4C6',
@@ -18,6 +19,7 @@ const colors = {
   lightBlack: '#0000008a',
   grey: '#BCBCBC',
   whiteSmoke: '#F4F4F4',
+  red: '#ea4d3f',
 
   outrageousOrange: '#F4511E',
   fuego: '#C0CA33',
