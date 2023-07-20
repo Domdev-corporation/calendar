@@ -25,9 +25,9 @@ const WeekHeaderDesktop = ({
                   width: '35px',
                   height: '35px',
                   fontSize: '16px',
+                  color: isSameDay(day, new Date()) ? colors.red : '',
                 }}
-                hoverBG={colors.powderBlue}
-                activeColor={colors.powderBlue}
+                hoverBG={colors.black}
                 className={`button ${
                   isSameDay(day, selectedDay) ? 'current-day-button' : ''
                 }`}

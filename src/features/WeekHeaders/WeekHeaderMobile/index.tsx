@@ -18,7 +18,7 @@ const WeekHeaderMobile = ({
 }: WeekHeaderProps): JSX.Element => {
   return (
     <Flex
-      sx={{ marginBottom: 10 }}
+      sx={{ gap: '5px', marginBottom: 10 }}
       align="center"
       direction="column"
       className="week-header_mobile"
@@ -37,9 +37,9 @@ const WeekHeaderMobile = ({
                   width: '35px',
                   height: '35px',
                   fontSize: '16px',
+                  color: isSameDay(day, new Date()) ? colors.red : '',
                 }}
-                hoverBG={colors.powderBlue}
-                activeColor={colors.powderBlue}
+                hoverBG={colors.black}
                 className={`button ${
                   isSameDay(day, selectedDay) ? 'current-day-button' : ''
                 } `}

@@ -4,6 +4,7 @@ import { MAX_DISPLAYED_SLOTS } from '../../MonthSlots/constants'
 import MonthEventModal from '../../MonthEventModal'
 import { MonthEvent } from '../../MonthEvent'
 import Button from '../../Button'
+import colors from '../../../theme/colors'
 import { DateFormat } from '../../../constants'
 
 import { useMonthSlot } from './useMonthSlot'
@@ -53,6 +54,7 @@ const MonthDesktopSlot = ({
           className={`month-cell-day ${
             !isCurrentMonth ? 'month-cell-day--othermonth' : ''
           } ${isSameDay(date, selectedDate) ? 'current-day-button' : ''}`}
+          sx={{ color: isSameDay(date, new Date()) ? colors.red : '' }}
           onClick={() => {
             onSelectDate(date)
           }}

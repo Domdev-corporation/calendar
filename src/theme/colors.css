@@ -1,5 +1,6 @@
 :root {
   --white: #ffffff;
+  --black: #000000;
   /* PINK */
   --crimson: #cc0056;
   --pitch-puff: #ffd4c6;
@@ -19,9 +20,11 @@
   --little-darker-grey: #70757a;
   --grey: #bcbcbc;
   --white-smoke: #f4f4f4;
+  /* RED */
+  --red: #ea4d3f;
 
   --outrageous-orange: #f4511e;
   --fuego: #c0ca33;
 
-  --transition: 0.2s;
+  --transition: 300ms;
 }

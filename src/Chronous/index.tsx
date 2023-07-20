@@ -94,31 +94,32 @@ const Calendar = ({
             </Flex>
           ) : null}
 
-          <Button
-            ariaLabel="Today"
-            onClick={goToday}
-            className="today-button header-grid-today"
-          >
-            Today
-          </Button>
-          <Flex spacing={16} className="header-grid-arrows">
+          {!isMobile && (
+            <Button
+              ariaLabel="Today"
+              onClick={goToday}
+              className="today-button header-grid-today"
+            >
+              Today
+            </Button>
+          )}
+
+          <Flex className="header-grid-arrows">
             <NavigationButton
               isDisabled={isDisabledPrevious}
               onClick={previous}
               customButton={prevButton}
-              hoverBG={colors.powderBlue}
               ariaLabel="Left Arrow"
               defaultStyles="button arrow-button"
-              defaultButton={<LeftArrow color={colors.teal} />}
+              defaultButton={<LeftArrow color={colors.red} />}
             />
             <NavigationButton
               isDisabled={isDisabledNext}
               onClick={next}
               customButton={nextButton}
-              hoverBG={colors.powderBlue}
               ariaLabel="Right Arrow"
               defaultStyles="button arrow-button"
-              defaultButton={<RightArrow color={colors.teal} />}
+              defaultButton={<RightArrow color={colors.red} />}
             />
           </Flex>
           {isMobile && <CreateNewEvent newEventModal={newEventModal} />}
@@ -160,6 +161,17 @@ const Calendar = ({
           />
         </div>
         {children}
+        {isMobile && (
+          <Flex className="footer">
+            <Button
+              ariaLabel="Today"
+              onClick={goToday}
+              className="today-button header-grid-today"
+            >
+              Today
+            </Button>
+          </Flex>
+        )}
       </Flex>
     </ModalProvider>
   )
