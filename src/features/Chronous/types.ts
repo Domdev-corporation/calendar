@@ -18,7 +18,7 @@ import {
 
 export type CombinedViewRowsType = WeekRowsType[] & DayRowsType[] & MonthRowsT[]
 
-type EventT = DayCellType | WeekCellType | MonthCellType
+export type EventT = DayCellType | WeekCellType | MonthCellType
 
 export type CalendarProps = Partial<UserEvents<EventT>> &
   ModalsT<EventT> & {
