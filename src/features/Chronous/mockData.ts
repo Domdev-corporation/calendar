@@ -1,4 +1,4 @@
-import { CalendarEventType } from '../types'
+import { CalendarEventType } from '../../types'
 
 import { returnDayDate } from './helpers'
 

@@ -1,7 +1,7 @@
 import { createContext } from 'react'
 
 import { ReactChildrenT } from '../../types'
-import Modal from '../../features/Modal'
+import Modal from '../../components/Modal'
 
 import { useModalContext } from './useModalContext'
 import { ModalContextT } from './types'

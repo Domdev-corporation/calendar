@@ -1,6 +1,6 @@
 import { getHours } from 'date-fns'
 
-import { useModals } from '../../context/ModalContext/useModals'
+import { useModals } from '../../contexts/ModalContext/useModals'
 import Plus from '../../components/Plus'
 
 import { CreateNewEventProps } from './types'

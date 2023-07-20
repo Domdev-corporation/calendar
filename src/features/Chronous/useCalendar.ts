@@ -1,9 +1,9 @@
 import { useCallback, useMemo, useState } from 'react'
 import { addDays, subDays, isBefore, isAfter } from 'date-fns'
 
-import { ViewsT } from '../types'
-import { configService } from '../services/configService'
-import { DAYS_IN_YEAR, Views } from '../constants'
+import { ViewsT } from '../../types'
+import { configService } from '../../services/configService'
+import { DAYS_IN_YEAR, Views } from '../../constants'
 
 import { UseCalendarProps } from './types'
 import {

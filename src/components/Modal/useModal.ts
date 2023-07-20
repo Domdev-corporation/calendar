@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-import { useModals } from '../../context/ModalContext/useModals'
+import { useModals } from '../../contexts/ModalContext/useModals'
 
 export const useModal = () => {
   const { x, y, containerW, userModal, isOpen } = useModals()
