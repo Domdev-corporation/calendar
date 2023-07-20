@@ -1,5 +1,12 @@
 import { MouseEvent } from 'react'
-import { addDays, getDay, getHours, getMinutes, parse } from 'date-fns'
+import {
+  addDays,
+  getDay,
+  getHours,
+  getMinutes,
+  isSameDay,
+  parse,
+} from 'date-fns'
 import { format } from 'date-fns'
 
 import {
@@ -82,4 +89,8 @@ export const convertTo24HourFormat = (timeString: string): string => {
   const formattedTime = format(parsedTime, DateFormat.HOUR_AND_MINUTE)
 
   return formattedTime
+}
+
+export const isCurrentDay = (day: Date | string): boolean => {
+  return isSameDay(new Date(day), new Date())
 }

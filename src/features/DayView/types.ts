@@ -17,4 +17,5 @@ export type DayViewProps = UserEvents<DayCellType> &
     renderEventComponent?: FunctionComponent<EventComponentProps>
     endHour: number
     startHour: number
+    isEventsList: boolean
   }
