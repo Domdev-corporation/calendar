@@ -9,7 +9,7 @@ const Arrow = ({
   size = IconSizes.md,
   direction = ArrowDirections.LEFT,
 }: ArrowIconT): JSX.Element => {
-  const d =
+  const pathData =
     direction === ArrowDirections.LEFT
       ? LEFT_ARROW_DRAW_PATH
       : RIGHT_ARROW_DRAW_PATH
@@ -23,7 +23,7 @@ const Arrow = ({
       aria-hidden="true"
       viewBox="0 0 24 24"
     >
-      <path fill={color} d={d}></path>
+      <path fill={color} d={pathData}></path>
     </svg>
   )
 }

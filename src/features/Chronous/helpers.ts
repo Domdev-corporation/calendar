@@ -16,6 +16,11 @@ import {
 } from 'date-fns'
 
 import {
+  CreateCells,
+  GenerateSlotsForDaysOfMonth,
+} from '../MonthSlots/MonthSlotsDesktop/types'
+import { COUNT_CELLS } from '../MonthSlots/constants'
+import {
   CalendarEventType,
   DayRowsType,
   ModesT,
@@ -23,11 +28,6 @@ import {
   ViewsT,
   WeekRowsType,
 } from '../../types'
-import {
-  CreateCells,
-  GenerateSlotsForDaysOfMonth,
-} from '../MonthSlots/MonthSlotsDesktop/types'
-import { COUNT_CELLS } from '../MonthSlots/constants'
 import {
   DAY_IN_HOURS,
   DaysOfTheWeek,
