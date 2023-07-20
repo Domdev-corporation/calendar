@@ -1,6 +1,5 @@
 .arrow-button {
   padding: 5px;
-  border-color: var(--powder-blue);
 }
 
 .dropdown-button {
@@ -10,28 +9,4 @@
   padding: 0 15px;
   text-transform: none;
   font-weight: 600;
-}
-
-.button:hover {
-  background-color: var(--alise-blue);
-}
-
-.ripple {
-  position: absolute;
-  border-radius: 50%;
-  animation: button-circle 300ms ease-in forwards;
-  transform-origin: center;
-  pointer-events: none;
-}
-
-@keyframes button-circle {
-  0% {
-    transform: scale(0);
-    opacity: 1;
-  }
-
-  100% {
-    transform: scale(2);
-    opacity: 0;
-  }
 }

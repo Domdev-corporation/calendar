@@ -3,6 +3,10 @@
   color: var(--light-black);
 }
 
+.icon-button:hover {
+  color: var(--white);
+}
+
 .disabled-button svg {
   fill: var(--grey);
 }

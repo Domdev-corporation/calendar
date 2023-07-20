@@ -3,7 +3,7 @@ import { IconSizes } from '../../constants'
 
 const LeftArrow = ({
   sx = {},
-  color = 'black',
+  color = 'red',
   size = IconSizes.md,
 }: IconsT): JSX.Element => {
   return (
