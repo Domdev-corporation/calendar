@@ -1,4 +1,5 @@
 import Flex from '../../components/Flex'
+import './styles.css'
 
 import { useTimePicker } from './useTimePicker'
 import { TimePickerProps } from './types'
@@ -13,24 +14,14 @@ export const TimePicker = ({
 
   return isDisplay(endHour, startHour) ? (
     <Flex
-      align="center"
+      className="timeline"
       sx={{
-        position: 'absolute',
         top:
           calculateTopIndentation(time, endHour - startHour) - PICKER_SIZE / 2,
         left: `-${PICKER_SIZE / 2}px`,
-        right: 0,
-        zIndex: 10,
       }}
     >
-      <div
-        style={{
-          width: PICKER_SIZE,
-          height: PICKER_SIZE,
-          background: 'red',
-          borderRadius: '50%',
-        }}
-      />
+      <div className="timeline__head" />
       <div style={{ height: 1, background: 'red', width: '100%' }} />
     </Flex>
   ) : null
