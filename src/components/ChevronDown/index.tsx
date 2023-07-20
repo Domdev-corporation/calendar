@@ -4,7 +4,7 @@ import { IconSizes } from '../../constants'
 
 const ChevronDown = ({
   sx = {},
-  color = colors.teal,
+  color = colors.red,
   size = IconSizes.xs,
 }: IconsT): JSX.Element => {
   return (

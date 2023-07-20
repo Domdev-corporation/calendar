@@ -4,6 +4,7 @@ import { format, isSameDay, isWeekend } from 'date-fns'
 import './styles.css'
 import { WeekHeaderProps } from '../types'
 import colors from '../../../theme/colors'
+import { isCurrentDay } from '../../../helpers'
 import { DateFormat } from '../../../constants'
 import Text from '../../../components/Text'
 import IconButton from '../../../components/IconButton'
@@ -18,7 +19,7 @@ const WeekHeaderMobile = ({
 }: WeekHeaderProps): JSX.Element => {
   return (
     <Flex
-      sx={{ marginBottom: 10 }}
+      sx={{ gap: '5px', marginBottom: 10 }}
       align="center"
       direction="column"
       className="week-header_mobile"
@@ -37,9 +38,9 @@ const WeekHeaderMobile = ({
                   width: '35px',
                   height: '35px',
                   fontSize: '16px',
+                  color: isCurrentDay(day) ? colors.red : '',
                 }}
-                hoverBG={colors.powderBlue}
-                activeColor={colors.powderBlue}
+                hoverBG={colors.black}
                 className={`button ${
                   isSameDay(day, selectedDay) ? 'current-day-button' : ''
                 } `}
