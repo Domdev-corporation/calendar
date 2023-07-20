@@ -5,7 +5,7 @@ import { LEFT_ARROW_DRAW_PATH, RIGHT_ARROW_DRAW_PATH } from './constants'
 
 const Arrow = ({
   sx = {},
-  color = 'red',
+  color = 'black',
   size = IconSizes.md,
   direction = ArrowDirections.LEFT,
 }: ArrowIconT): JSX.Element => {
