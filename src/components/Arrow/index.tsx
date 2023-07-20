@@ -19,11 +19,12 @@ const Arrow = ({
       style={sx}
       width={size}
       height={size}
+      fill={color}
       focusable="false"
       aria-hidden="true"
       viewBox="0 0 24 24"
     >
-      <path fill={color} d={pathData}></path>
+      <path d={pathData}></path>
     </svg>
   )
 }

@@ -167,6 +167,7 @@
 
 .header-grid__back-month {
   grid-area: back_month;
+  cursor: pointer;
 }
 
 .header-grid__plus {
