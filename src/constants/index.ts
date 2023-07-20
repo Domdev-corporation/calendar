@@ -39,7 +39,6 @@ export enum DateFormat {
   HOUR_AND_MINUTE = 'HH:mm',
   MERIDIEM_TIME = 'hh:mm a',
   TIME_STAMP = 'h:mm aa',
-  TIME_STAMP_24 = 'k:mm aa',
   MINUTE = 'mm',
   YEAR_MONTH_DAY = 'yyyy-LLLL-dd',
   DATE = 'yyyy-MM-dd',
