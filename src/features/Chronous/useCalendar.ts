@@ -3,6 +3,8 @@ import { addDays, subDays, isBefore, isAfter } from 'date-fns'
 
 import { ViewsT } from '../../types'
 import { configService } from '../../services/configService'
+import { useWindowResize } from '../../hooks/useWindowResize'
+import { getScreenWidth } from '../../helpers'
 import { DAYS_IN_YEAR, Views } from '../../constants'
 
 import { UseCalendarProps } from './types'
@@ -29,7 +31,8 @@ export const useCalendar = ({
   config,
   mode,
 }: UseCalendarProps) => {
-  const { getView, getMode } = configService(config)
+  const [windowWidth, setWindowWidth] = useState<number>(0)
+  const { getView, getMode } = configService(config, windowWidth)
   const [viewMode, setViewMode] = useState<ViewsT>(getView(view))
   const [currentDate, setCurrentDate] = useState<Date>(currentDay)
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
@@ -102,6 +105,8 @@ export const useCalendar = ({
     setViewMode(view)
     onChangeView(view)
   }
+
+  useWindowResize(() => setWindowWidth(getScreenWidth()))
 
   const handleEventsList = () => {
     setEventsList(prev => !prev)
