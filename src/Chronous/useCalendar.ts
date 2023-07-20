@@ -33,6 +33,7 @@ export const useCalendar = ({
   const [viewMode, setViewMode] = useState<ViewsT>(getView(view))
   const [currentDate, setCurrentDate] = useState<Date>(currentDay)
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
+  const [isEventsList, setEventsList] = useState(false)
 
   const currentYear = useMemo(() => currentDate.getFullYear(), [currentDate])
 
@@ -102,6 +103,10 @@ export const useCalendar = ({
     onChangeView(view)
   }
 
+  const handleEventsList = () => {
+    setEventsList(prev => !prev)
+  }
+
   return {
     viewMode,
     startDate,
@@ -118,6 +123,8 @@ export const useCalendar = ({
     handleViewMode,
     deviceMode: getMode(mode),
     isMobile: isMobileMode(getMode(mode)),
-    isWeek: isWeekView(getView(view)),
+    isWeek: isWeekView(viewMode),
+    isEventsList,
+    handleEventsList,
   }
 }

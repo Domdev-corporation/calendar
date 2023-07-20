@@ -34,7 +34,7 @@ const Calendar = ({
   events = mockEvents,
   renderEventComponent,
   startHour = START_HOUR,
-  mode = Devices.DESKTOP,
+  mode = Devices.MOBILE,
   currentDay = new Date(),
   dropDownArrow = <ChevronDown />,
   eventModal,
@@ -61,6 +61,8 @@ const Calendar = ({
     previous,
     handleViewMode,
     selectDateHandler,
+    handleEventsList,
+    isEventsList,
   } = useCalendar({
     mode,
     view,
@@ -133,7 +135,11 @@ const Calendar = ({
             </Text>
           )}
 
-          <Button ariaLabel="List icon" className="header-grid-list">
+          <Button
+            onClick={handleEventsList}
+            ariaLabel="List icon"
+            className="header-grid-list"
+          >
             <ListIcon />
           </Button>
 
@@ -148,6 +154,7 @@ const Calendar = ({
         </div>
         <div className="calendar">
           <View
+            isEventsList={isEventsList}
             events={events}
             endHour={endHour}
             startHour={startHour}

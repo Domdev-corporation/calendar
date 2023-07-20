@@ -31,8 +31,6 @@ export type CalendarEventType = {
   start: string
   end: string
   overlapping?: number
-  position?: string | number
-  width?: string
   color?: string
   textColor?: string
   opacity?: number
@@ -51,7 +49,7 @@ export type DayRowsType = {
 export type MonthRowsT = {
   date: Date
   isCurrentMonth: boolean
-  slots: CalendarEventType[]
+  slots: CellT[]
 }
 
 type CellT = CalendarEventType & {

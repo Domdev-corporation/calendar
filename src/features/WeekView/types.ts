@@ -21,4 +21,5 @@ export type WeekViewProps = UserEvents<WeekCellType> &
     endHour: number
     startHour: number
     deviceMode: ModesT
+    isEventsList: boolean
   }
