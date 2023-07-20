@@ -81,3 +81,8 @@ export enum Devices {
 }
 
 export const INDEX_OF_SUNDAY = 6
+
+export enum ArrowDirections {
+  LEFT = 'left',
+  RIGHT = 'right',
+}

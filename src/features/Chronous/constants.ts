@@ -1,6 +1,6 @@
-import WeekView from '../features/WeekView'
-import MonthView from '../features/MonthView'
-import DayView from '../features/DayView'
+import WeekView from '../WeekView'
+import MonthView from '../MonthView'
+import DayView from '../DayView'
 
 export const VIEW_MODES = {
   Week: WeekView,

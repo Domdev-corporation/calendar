@@ -2,7 +2,7 @@ import { TimePicker } from '../../TimePicker'
 import EventItem from '../../EventItem'
 import EventContainer from '../../EventContainer'
 import { checkSelected, convertTo24HourFormat } from '../../../helpers'
-import { useModals } from '../../../context/ModalContext/useModals'
+import { useModals } from '../../../contexts/ModalContext/useModals'
 
 import './styles.css'
 import { WeekSlotsMobileProps } from './types'

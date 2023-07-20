@@ -1,21 +1,20 @@
-import '../theme/colors.css'
+import '../../theme/colors.css'
 import './styles.css'
 
 import { format } from 'date-fns'
 
-import colors from '../theme/colors'
-import CreateNewEvent from '../features/CreateNewEvent'
-import Button from '../features/Button'
-import { ModalProvider } from '../context/ModalContext'
-import { DateFormat, Devices, Views } from '../constants'
-import Text from '../components/Text'
-import RightArrow from '../components/RightArrow'
-import { NavigationButton } from '../components/NavigationButton'
-import ListIcon from '../components/ListIcon'
-import LeftArrow from '../components/LeftArrow'
-import Flex from '../components/Flex'
-import DropDown from '../components/DropDown'
-import ChevronDown from '../components/ChevronDown'
+import CreateNewEvent from '../CreateNewEvent'
+import Button from '../Button'
+import colors from '../../theme/colors'
+import { ModalProvider } from '../../contexts/ModalContext'
+import { ArrowDirections, DateFormat, Devices, Views } from '../../constants'
+import Text from '../../components/Text'
+import { NavigationButton } from '../../components/NavigationButton'
+import ListIcon from '../../components/ListIcon'
+import Flex from '../../components/Flex'
+import DropDown from '../../components/DropDown'
+import ChevronDown from '../../components/ChevronDown'
+import Arrow from '../../components/Arrow'
 
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
@@ -92,7 +91,7 @@ const Calendar = ({
               className="header-grid__back-month"
               onClick={() => handleViewMode('Month')}
             >
-              <LeftArrow />
+              <Arrow />
               <Text>{format(startDate, DateFormat.MONTH_LONG)}</Text>
             </Flex>
           ) : null}
@@ -114,7 +113,7 @@ const Calendar = ({
               hoverBG={colors.powderBlue}
               isDisabled={isDisabledPrevious}
               defaultStyles="button arrow-button"
-              defaultButton={<LeftArrow color={colors.red} />}
+              defaultButton={<Arrow color={colors.red} />}
               onClick={previous}
             />
             <NavigationButton
@@ -123,7 +122,9 @@ const Calendar = ({
               isDisabled={isDisabledNext}
               hoverBG={colors.powderBlue}
               defaultStyles="button arrow-button"
-              defaultButton={<RightArrow color={colors.red} />}
+              defaultButton={
+                <Arrow direction={ArrowDirections.RIGHT} color={colors.red} />
+              }
               onClick={next}
             />
           </Flex>

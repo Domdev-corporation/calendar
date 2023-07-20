@@ -16,18 +16,18 @@ import {
 } from 'date-fns'
 
 import {
+  CreateCells,
+  GenerateSlotsForDaysOfMonth,
+} from '../MonthSlots/MonthSlotsDesktop/types'
+import { COUNT_CELLS } from '../MonthSlots/constants'
+import {
   CalendarEventType,
   DayRowsType,
   ModesT,
   MonthRowsT,
   ViewsT,
   WeekRowsType,
-} from '../types'
-import {
-  CreateCells,
-  GenerateSlotsForDaysOfMonth,
-} from '../features/MonthSlots/MonthSlotsDesktop/types'
-import { COUNT_CELLS } from '../features/MonthSlots/constants'
+} from '../../types'
 import {
   DAY_IN_HOURS,
   DaysOfTheWeek,
@@ -36,7 +36,7 @@ import {
   daysOfWeek,
   Views,
   Devices,
-} from '../constants'
+} from '../../constants'
 
 import { HoursColumnT, RowsInfoT, DateRangeT } from './types'
 

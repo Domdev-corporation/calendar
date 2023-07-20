@@ -1,4 +1,4 @@
 import './styles/index.css'
-import Chronous from './Chronous'
+import Chronous from './features/Chronous'
 
 export default Chronous

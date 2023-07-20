@@ -1,4 +1,4 @@
-import { EventT } from '../../Chronous/types'
+import { EventT } from '../Chronous/types'
 
 export type EventsListProps = {
   events: EventT[][]

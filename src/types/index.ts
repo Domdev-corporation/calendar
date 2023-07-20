@@ -1,7 +1,7 @@
 import { CSSProperties, ReactNode } from 'react'
 import { Duration } from 'date-fns'
 
-import { Devices, IconSizes, Views } from './constants'
+import { ArrowDirections, Devices, IconSizes, Views } from '../constants'
 
 export type ReactChildrenT = {
   children: ReactNode
@@ -22,6 +22,12 @@ export type IconsT = {
   onClick?: () => void
   color?: string
 }
+
+export type DirectionT<T extends string> = {
+  direction?: ValueOF<T>
+}
+
+export type ArrowIconT = IconsT & DirectionT<ArrowDirections>
 
 export type WeekStartsOnType = 0 | 1 | 2 | 3 | 4 | 5 | 6 | undefined
 

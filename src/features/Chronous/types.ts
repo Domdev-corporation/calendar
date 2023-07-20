@@ -14,7 +14,7 @@ import {
   ViewsT,
   WeekCellType,
   WeekRowsType,
-} from '../types'
+} from '../../types'
 
 export type CombinedViewRowsType = WeekRowsType[] & DayRowsType[] & MonthRowsT[]
 
