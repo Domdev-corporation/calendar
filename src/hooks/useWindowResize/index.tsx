@@ -5,6 +5,7 @@ export const useWindowResize = (callback: () => void) => {
 
   useEffect(() => {
     window.addEventListener('resize', resizeHandler)
+
     return () => {
       window.removeEventListener('resize', resizeHandler)
     }
