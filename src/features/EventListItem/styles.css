@@ -13,8 +13,8 @@
   margin-bottom: 10px;
 }
 
-.event-list-item_hour,
-.event-list-item_description {
+.event-list-item__hour,
+.event-list-item__description {
   color: var(--grey);
 }
 
@@ -27,7 +27,7 @@
   width: 100%;
 }
 
-.event-list-item_description {
+.event-list-item__description {
   flex: 0 1 80%;
   margin-left: 10px;
 }

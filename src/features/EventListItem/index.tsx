@@ -17,13 +17,13 @@ export const EventListItem = ({
     <Flex justify="space-between" className="event-list-item">
       <div style={{ background: color }} className="event-mark" />
 
-      <Text className="event-list-item_description">{description}</Text>
+      <Text className="event-list-item__description">{description}</Text>
 
       <Flex spacing={5} direction="column">
-        <Text className="event-list-item_hour">
+        <Text className="event-list-item__hour">
           {format(startDate, DateFormat.HOUR_AND_MINUTE)}
         </Text>
-        <Text className="event-list-item_hour">
+        <Text className="event-list-item__hour">
           {format(endDate, DateFormat.HOUR_AND_MINUTE)}
         </Text>
       </Flex>
