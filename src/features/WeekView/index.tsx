@@ -1,6 +1,7 @@
 import { memo, useMemo } from 'react'
 import { format } from 'date-fns'
 
+import EventsList from '../EventsList'
 import { DateFormat } from '../../constants'
 
 import { WeekViewProps } from './types'
@@ -22,6 +23,7 @@ const WeekView = ({
   endHour,
   startHour,
   deviceMode,
+  isEventsList,
 }: WeekViewProps): JSX.Element => {
   const weekDays = useMemo(() => getWeekDays(startDate), [startDate])
 
@@ -40,7 +42,9 @@ const WeekView = ({
   const Week = WeekSlots[deviceMode]
   const Header = WeekHeaders[deviceMode]
 
-  return (
+  return isEventsList ? (
+    <EventsList days={weekDays} events={eventsByWeek} />
+  ) : (
     <>
       <Header
         weekDays={weekDays}

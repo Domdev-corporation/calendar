@@ -1,5 +1,6 @@
 import { memo } from 'react'
 
+import EventsList from '../EventsList'
 import DaySlots from '../DaySlots'
 import DayHeader from '../DayHeader'
 
@@ -18,8 +19,14 @@ const DayView = ({
   newEventModal,
   endHour,
   startHour,
+  isEventsList,
 }: DayViewProps): JSX.Element => {
-  return (
+  return isEventsList ? (
+    <EventsList
+      days={[startDate]}
+      events={[getEventsByDay(events, startDate)]}
+    />
+  ) : (
     <>
       <div className="header">
         <DayHeader day={startDate} />

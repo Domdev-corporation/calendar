@@ -11,6 +11,7 @@ import { DateFormat, Devices, Views } from '../constants'
 import Text from '../components/Text'
 import RightArrow from '../components/RightArrow'
 import { NavigationButton } from '../components/NavigationButton'
+import ListIcon from '../components/ListIcon'
 import LeftArrow from '../components/LeftArrow'
 import Flex from '../components/Flex'
 import DropDown from '../components/DropDown'
@@ -27,49 +28,51 @@ const Calendar = ({
   nextButton,
   prevButton,
   config = [],
-  endHour = END_HOUR,
-  startHour = START_HOUR,
   selectedEvent,
+  view = Views.WEEK,
+  endHour = END_HOUR,
   events = mockEvents,
   renderEventComponent,
-  view = Views.WEEK,
-  mode = Devices.DESKTOP,
+  startHour = START_HOUR,
+  mode = Devices.MOBILE,
   currentDay = new Date(),
   dropDownArrow = <ChevronDown />,
-  onClickEvent = () => {},
-  onClickCell = () => {},
-  onChangeDate = () => {},
   eventModal,
   newEventModal,
+  onClickCell = () => {},
+  onClickEvent = () => {},
+  onChangeDate = () => {},
   onChangeView = () => {},
 }: CalendarProps): JSX.Element => {
   const {
+    isWeek,
+    endDate,
+    isMobile,
     viewMode,
     startDate,
-    endDate,
-    currentYear,
+    deviceMode,
     renderRows,
+    currentYear,
     selectedDate,
     isDisabledNext,
     isDisabledPrevious,
     next,
-    previous,
-    selectDateHandler,
     goToday,
+    previous,
     handleViewMode,
-    deviceMode,
-    isMobile,
-    isWeek,
+    selectDateHandler,
+    handleEventsList,
+    isEventsList,
   } = useCalendar({
-    currentDay: new Date(currentDay),
-    events,
-    onChangeDate,
-    config,
-    view,
-    startHour,
-    endHour,
-    onChangeView,
     mode,
+    view,
+    events,
+    config,
+    endHour,
+    startHour,
+    currentDay: new Date(currentDay),
+    onChangeView,
+    onChangeDate,
   })
 
   const View = VIEW_MODES[viewMode]
@@ -77,17 +80,17 @@ const Calendar = ({
   return (
     <ModalProvider>
       <Flex
-        direction="column"
-        className={className}
         spacing={16}
+        direction="column"
         sx={{ margin: 16 }}
+        className={className}
       >
         <div className={`header-grid ${isMobile ? 'header-grid_mobile' : ''}`}>
           {isMobile && isWeek ? (
             <Flex
-              onClick={() => handleViewMode('Month')}
-              className="header-grid__back-month"
               align="center"
+              className="header-grid__back-month"
+              onClick={() => handleViewMode('Month')}
             >
               <LeftArrow />
               <Text>{format(startDate, DateFormat.MONTH_LONG)}</Text>
@@ -106,20 +109,22 @@ const Calendar = ({
 
           <Flex className="header-grid-arrows">
             <NavigationButton
-              isDisabled={isDisabledPrevious}
-              onClick={previous}
-              customButton={prevButton}
               ariaLabel="Left Arrow"
+              customButton={prevButton}
+              hoverBG={colors.powderBlue}
+              isDisabled={isDisabledPrevious}
               defaultStyles="button arrow-button"
               defaultButton={<LeftArrow color={colors.red} />}
+              onClick={previous}
             />
             <NavigationButton
-              isDisabled={isDisabledNext}
-              onClick={next}
-              customButton={nextButton}
               ariaLabel="Right Arrow"
+              customButton={nextButton}
+              isDisabled={isDisabledNext}
+              hoverBG={colors.powderBlue}
               defaultStyles="button arrow-button"
               defaultButton={<RightArrow color={colors.red} />}
+              onClick={next}
             />
           </Flex>
           {isMobile && <CreateNewEvent newEventModal={newEventModal} />}
@@ -133,6 +138,14 @@ const Calendar = ({
             </Text>
           )}
 
+          <Button
+            onClick={handleEventsList}
+            ariaLabel="List icon"
+            className="header-grid-list"
+          >
+            <ListIcon />
+          </Button>
+
           {!isMobile && (
             <DropDown
               list={Object.values(Views)}
@@ -144,20 +157,21 @@ const Calendar = ({
         </div>
         <div className="calendar">
           <View
-            deviceMode={deviceMode}
+            isEventsList={isEventsList}
+            events={events}
             endHour={endHour}
             startHour={startHour}
-            eventModal={eventModal}
-            newEventModal={newEventModal}
-            onClickCell={onClickCell}
-            events={events}
-            renderRows={renderRows as CombinedViewRowsType}
             startDate={startDate}
+            deviceMode={deviceMode}
             selectedDate={selectedDate}
             selectedEvent={selectedEvent}
-            selectDateHandler={selectDateHandler}
-            onClickEvent={onClickEvent}
             renderEventComponent={renderEventComponent}
+            renderRows={renderRows as CombinedViewRowsType}
+            eventModal={eventModal}
+            onClickCell={onClickCell}
+            onClickEvent={onClickEvent}
+            newEventModal={newEventModal}
+            selectDateHandler={selectDateHandler}
           />
         </div>
         {children}
