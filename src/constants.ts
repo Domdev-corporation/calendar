@@ -45,7 +45,7 @@ export enum DateFormat {
   DAY_OF_WEEK = 'EE',
   HOUR_MERIDIEM = 'haaa',
   DAYOFWEEK_DAY_MONTHNAME_YEAR = 'EEEE d MMMM yyyy',
-  DAYOFWEEK_DAY_MONTH = 'EEEE, dd MMM',
+  WEEKDAY_DAY_MONTH = 'EEEE, dd MMM',
 }
 
 export const DAYS_IN_YEAR = 365

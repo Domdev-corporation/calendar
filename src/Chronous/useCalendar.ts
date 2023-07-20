@@ -33,7 +33,7 @@ export const useCalendar = ({
   const [viewMode, setViewMode] = useState<ViewsT>(getView(view))
   const [currentDate, setCurrentDate] = useState<Date>(currentDay)
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
-  const [isEventsList, setEventsList] = useState(false)
+  const [isEventsList, setEventsList] = useState<boolean>(false)
 
   const currentYear = useMemo(() => currentDate.getFullYear(), [currentDate])
 

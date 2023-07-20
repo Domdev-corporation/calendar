@@ -21,7 +21,7 @@ const EventsList = ({ days, events }: EventsListProps): JSX.Element => {
                 isCurrentDay(day) ? 'event-title_current-day' : ''
               }`}
             >
-              {format(new Date(day), DateFormat.DAYOFWEEK_DAY_MONTH)}
+              {format(new Date(day), DateFormat.WEEKDAY_DAY_MONTH)}
             </Text>
             {events[index].map(({ end, start, id, title, color }) => {
               return (
