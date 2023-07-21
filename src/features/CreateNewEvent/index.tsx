@@ -1,6 +1,7 @@
-import { getHours } from 'date-fns'
+import { format } from 'date-fns'
 
 import { useModals } from '../../contexts/ModalContext/useModals'
+import { DateFormat } from '../../constants'
 import Plus from '../../components/Plus'
 
 import { CreateNewEventProps } from './types'
@@ -18,7 +19,7 @@ const CreateNewEvent = ({
           newEventModal({
             onClose,
             day: new Date(),
-            time: String(getHours(new Date())),
+            time: String(format(new Date(), DateFormat.TIME_STAMP)),
           }),
         )
       }}
