@@ -9,12 +9,12 @@ import { ModalContextT } from './types'
 export const ModalContext = createContext<ModalContextT | null>(null)
 
 export const ModalProvider = ({ children }: ReactChildrenT): JSX.Element => {
-  const { contextValues } = useModalContext()
+  const { contextValues, modalData, userModal } = useModalContext()
 
   return (
     <ModalContext.Provider value={contextValues}>
       {children}
-      <Modal />
+      <Modal modalData={modalData} userModal={userModal} />
     </ModalContext.Provider>
   )
 }

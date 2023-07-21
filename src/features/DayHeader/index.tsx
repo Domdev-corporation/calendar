@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { format, isSameDay } from 'date-fns'
+import { format } from 'date-fns'
 
 import colors from '../../theme/colors'
 import { isCurrentDay } from '../../helpers'

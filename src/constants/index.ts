@@ -86,3 +86,5 @@ export enum ArrowDirections {
   LEFT = 'left',
   RIGHT = 'right',
 }
+
+export const MOBILE_WIDTH = 450
