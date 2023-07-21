@@ -10,11 +10,10 @@ export type ModalT = PositionT & {
   isOpen: boolean
 }
 
-export type ModalContextT = ModalT & {
+export type ModalContextT = {
   onOpen: <T = MouseEvent<HTMLDivElement, MouseEvent>>(
     event: T,
     modal: ReactNode,
   ) => void
   onClose: () => void
-  userModal: ReactNode
 }

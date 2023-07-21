@@ -33,6 +33,7 @@ const WeekSlotsDesktop = ({
 
               return (
                 <div
+                  key={index}
                   className="cell"
                   onClick={e => {
                     const eventData = {

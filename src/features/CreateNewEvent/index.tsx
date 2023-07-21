@@ -19,7 +19,7 @@ const CreateNewEvent = ({
           newEventModal({
             onClose,
             day: new Date(),
-            time: String(format(new Date(), DateFormat.TIME_STAMP_24)),
+            time: String(format(new Date(), DateFormat.TIME_STAMP)),
           }),
         )
       }}
