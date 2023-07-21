@@ -1,5 +1,5 @@
 import { memo } from 'react'
-import { format, isSameDay } from 'date-fns'
+import { format } from 'date-fns'
 
 import colors from '../../theme/colors'
 import { isCurrentDay } from '../../helpers'
@@ -24,13 +24,9 @@ const DayHeader = ({
         key={day.toLocaleString()}
       >
         <IconButton
-          sx={{
-            width: 50,
-            height: 50,
-            fontSize: '2rem',
-            color: isCurrentDay(day) ? colors.red : '',
-          }}
-          className="button current-day-button"
+          className={`button ${
+            isCurrentDay(day) ? 'current-date' : ''
+          } selected-date`}
         >
           {format(day, DateFormat.DAY_NUMBER)}
         </IconButton>

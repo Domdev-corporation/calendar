@@ -6,7 +6,6 @@ export const NavigationButton = ({
   isDisabled,
   onClick,
   customButton,
-  hoverBG,
   ariaLabel,
   defaultButton,
   defaultStyles,
@@ -29,7 +28,6 @@ export const NavigationButton = ({
       onClick={onClick}
       className={defaultStyles}
       outlined
-      hoverBG={hoverBG}
       ariaLabel={ariaLabel}
     >
       {defaultButton}

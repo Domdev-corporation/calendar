@@ -1,7 +1,6 @@
 import './styles.css'
 import Flex from '../Flex'
 
-import { useIconButton } from './useIconButton'
 import { IconButtonProps } from './types'
 
 const IconButton = ({
@@ -9,29 +8,19 @@ const IconButton = ({
   className = '',
   sx,
   onClick = () => {},
-  hoverBG,
-  activeColor,
   outlined = false,
   isDisabled = false,
   resetDefaultStyles = false,
   ariaLabel,
 }: IconButtonProps): JSX.Element => {
-  const { handleClick, handleMouseOut, handleMouseOver } = useIconButton({
-    hoverBG,
-    activeColor,
-    onClick,
-  })
-
   return (
     <button
       type="button"
-      onClick={handleClick}
+      onClick={onClick}
       style={{ border: outlined ? '' : 'none', ...sx }}
       className={`${resetDefaultStyles ? 'button-reset' : 'icon-button'} ${
         isDisabled ? 'disabled-button' : ''
       } ${className}`}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
       aria-label={ariaLabel}
     >
       <Flex align="center" justify="center">

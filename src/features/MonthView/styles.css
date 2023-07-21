@@ -53,6 +53,11 @@
   aspect-ratio: 1 / 1;
 }
 
+.month-cell-day:hover {
+  background-color: var(--black);
+  color: var(--white);
+}
+
 .event-line {
   display: flex;
   gap: 6px;

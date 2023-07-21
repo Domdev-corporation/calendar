@@ -1,11 +1,12 @@
 import { ArrowIconT } from '../../types'
+import colors from '../../theme/colors'
 import { ArrowDirections, IconSizes } from '../../constants'
 
 import { directions } from './constants'
 
 const Arrow = ({
   sx = {},
-  color = 'black',
+  color = colors.red,
   size = IconSizes.md,
   direction = ArrowDirections.LEFT,
 }: ArrowIconT): JSX.Element => (

@@ -43,7 +43,7 @@ p {
   transition: var(--transition);
 }
 
-.button.current-day-button {
+.button.selected-date {
   color: var(--white);
   background-color: var(--black);
 }

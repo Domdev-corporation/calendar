@@ -4,7 +4,7 @@ const Flex = ({
   children,
   sx = {},
   className = '',
-  direction = 'row',
+  direction,
   align = '',
   justify = '',
   spacing = 0,

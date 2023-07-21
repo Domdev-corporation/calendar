@@ -5,7 +5,6 @@ import { format } from 'date-fns'
 
 import CreateNewEvent from '../CreateNewEvent'
 import Button from '../Button'
-import colors from '../../theme/colors'
 import { ModalProvider } from '../../contexts/ModalContext'
 import { ArrowDirections, DateFormat, Devices, Views } from '../../constants'
 import Text from '../../components/Text'
@@ -110,21 +109,17 @@ const Calendar = ({
             <NavigationButton
               ariaLabel="Left Arrow"
               customButton={prevButton}
-              hoverBG={colors.powderBlue}
               isDisabled={isDisabledPrevious}
               defaultStyles="button arrow-button"
-              defaultButton={<Arrow color={colors.red} />}
+              defaultButton={<Arrow />}
               onClick={previous}
             />
             <NavigationButton
               ariaLabel="Right Arrow"
               customButton={nextButton}
               isDisabled={isDisabledNext}
-              hoverBG={colors.powderBlue}
               defaultStyles="button arrow-button"
-              defaultButton={
-                <Arrow direction={ArrowDirections.RIGHT} color={colors.red} />
-              }
+              defaultButton={<Arrow direction={ArrowDirections.RIGHT} />}
               onClick={next}
             />
           </Flex>

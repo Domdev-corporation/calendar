@@ -2,7 +2,6 @@ import { memo } from 'react'
 import { format, isSameDay } from 'date-fns'
 
 import { WeekHeaderProps } from '../types'
-import colors from '../../../theme/colors'
 import { isCurrentDay } from '../../../helpers'
 import { DateFormat } from '../../../constants'
 import IconButton from '../../../components/IconButton'
@@ -22,15 +21,8 @@ const WeekHeaderDesktop = ({
             <div>
               <IconButton
                 onClick={() => onSelectDate(day)}
-                sx={{
-                  width: '35px',
-                  height: '35px',
-                  fontSize: '16px',
-                  color: isCurrentDay(day) ? colors.red : '',
-                }}
-                hoverBG={colors.black}
-                className={`button ${
-                  isSameDay(day, selectedDay) ? 'current-day-button' : ''
+                className={`button ${isCurrentDay(day) ? 'current-date' : ''} ${
+                  isSameDay(day, selectedDay) ? 'selected-date' : ''
                 }`}
               >
                 {format(day, DateFormat.DAY_NUMBER)}
