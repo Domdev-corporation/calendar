@@ -2,12 +2,13 @@ import ReactDOM from 'react-dom'
 import { ReactPortal } from 'react'
 
 import { useModal } from './useModal'
+import { ModalProps } from './types'
 
-const Modal = (): ReactPortal | null => {
-  const { getIndentLeft, isOpen, indentTop, ref, modalWidth, userModal } =
-    useModal()
+const Modal = ({ modalData, userModal }: ModalProps): ReactPortal | null => {
+  const { getIndentLeft, indentTop, ref, modalWidth, isMobile } =
+    useModal(modalData)
 
-  return isOpen
+  return modalData.isOpen
     ? ReactDOM.createPortal(
         <div
           ref={ref}
@@ -16,10 +17,11 @@ const Modal = (): ReactPortal | null => {
           style={{
             position: 'fixed',
             top: indentTop,
-            left: getIndentLeft(),
             zIndex: 10,
-            display: isOpen ? 'block' : 'none',
+            display: modalData.isOpen ? 'block' : 'none',
             opacity: modalWidth ? 1 : 0,
+            left: getIndentLeft(),
+            transform: isMobile ? 'translate(-50%)' : 'none',
           }}
         >
           {userModal}

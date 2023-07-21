@@ -46,12 +46,10 @@ export const useModalContext = () => {
 
   const contextValues: ModalContextT = useMemo(
     () => ({
-      ...modalData,
-      userModal,
       onOpen,
       onClose,
     }),
-    [userModal, modalData, onOpen],
+    [onOpen],
   )
 
   useEffect(() => {
@@ -62,5 +60,5 @@ export const useModalContext = () => {
     }
   }, [onClickOutside])
 
-  return { contextValues }
+  return { contextValues, modalData, userModal }
 }
