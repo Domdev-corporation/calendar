@@ -2,6 +2,10 @@
   padding: 5px;
 }
 
+.icon-button.arrow-button:hover {
+  background-color: transparent;
+}
+
 .dropdown-button {
   display: flex;
   align-items: center;
