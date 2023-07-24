@@ -28,7 +28,7 @@ const WeekHeaderMobile = ({
 
               <IconButton
                 onClick={() => onSelectDate(day)}
-                className={`button ${isCurrentDay(day) ? 'current-date' : ''} ${
+                className={`button ${isCurrentDay(day) ? 'current-day' : ''} ${
                   isSameDay(day, selectedDay) ? 'selected-date' : ''
                 } `}
               >

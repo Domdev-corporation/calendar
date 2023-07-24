@@ -2,7 +2,6 @@ import './styles.css'
 import { isSameDay, isWeekend } from 'date-fns'
 
 import { MonthSlotProps } from '../types'
-import colors from '../../../theme/colors'
 import { isCurrentDay } from '../../../helpers'
 import Text from '../../../components/Text'
 import IconButton from '../../../components/IconButton'
@@ -26,7 +25,7 @@ const MonthMobileSlot = ({
             width: 30,
             height: 30,
           }}
-          className={`button ${isCurrentDay(date) ? 'current-date' : ''}  ${
+          className={`button ${isCurrentDay(date) ? 'current-day' : ''}  ${
             !isCurrentMonth ? 'mobile--other-month' : ''
           } ${isSameDay(date, selectedDate) ? 'selected-date' : ''}`}
           onClick={() => onSelectDate(date)}

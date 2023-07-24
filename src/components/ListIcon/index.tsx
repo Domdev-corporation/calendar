@@ -1,9 +1,10 @@
 import { IconsT } from '../../types'
+import colors from '../../theme/colors'
 import { IconSizes } from '../../constants'
 
 const ListIcon = ({
   sx = {},
-  color = 'black',
+  color = colors.red,
   size = IconSizes.sm,
 }: IconsT): JSX.Element => {
   return (

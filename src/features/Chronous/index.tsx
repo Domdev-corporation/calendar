@@ -31,8 +31,8 @@ const Calendar = ({
   endHour = END_HOUR,
   events = mockEvents,
   renderEventComponent,
-  startHour = START_HOUR,
   mode = Devices.MOBILE,
+  startHour = START_HOUR,
   currentDay = new Date(),
   dropDownArrow = <ChevronDown />,
   eventModal,
@@ -52,6 +52,7 @@ const Calendar = ({
     renderRows,
     currentYear,
     selectedDate,
+    isEventsList,
     isDisabledNext,
     isDisabledPrevious,
     next,
@@ -60,7 +61,6 @@ const Calendar = ({
     handleViewMode,
     selectDateHandler,
     handleEventsList,
-    isEventsList,
   } = useCalendar({
     mode,
     view,
@@ -108,10 +108,10 @@ const Calendar = ({
           <Flex className="header-grid-arrows">
             <NavigationButton
               ariaLabel="Left Arrow"
+              defaultButton={<Arrow />}
               customButton={prevButton}
               isDisabled={isDisabledPrevious}
               defaultStyles="button arrow-button"
-              defaultButton={<Arrow />}
               onClick={previous}
             />
             <NavigationButton
@@ -135,9 +135,9 @@ const Calendar = ({
           )}
 
           <Button
-            onClick={handleEventsList}
             ariaLabel="List icon"
-            className="header-grid-list"
+            className={`header-grid-list ${isEventsList ? 'active-list' : ''}`}
+            onClick={handleEventsList}
           >
             <ListIcon />
           </Button>

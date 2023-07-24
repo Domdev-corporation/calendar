@@ -25,7 +25,7 @@ const DayHeader = ({
       >
         <IconButton
           className={`button ${
-            isCurrentDay(day) ? 'current-date' : ''
+            isCurrentDay(day) ? 'current-day' : ''
           } selected-date`}
         >
           {format(day, DateFormat.DAY_NUMBER)}
