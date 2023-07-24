@@ -25,8 +25,6 @@ export enum ShortDayNames {
   SUNDAY = 'S',
 }
 
-export const CELL_HEIGHT = 60
-
 export const OVERLAP_STEP = 8
 
 export enum DateFormat {
