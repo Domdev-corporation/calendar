@@ -1,7 +1,6 @@
 import { getBlockHeight, getStartPosition } from '../../helpers'
 
 import { EventContainerProps } from './types'
-import { EVENT_GAP } from './constants'
 
 const EventContainer = ({
   duration,
@@ -11,6 +10,7 @@ const EventContainer = ({
   start,
   children,
   onClick,
+  gap,
 }: EventContainerProps): JSX.Element => {
   return (
     <div
@@ -20,7 +20,7 @@ const EventContainer = ({
         zIndex: (overlapping ? overlapping : index) + 1,
         top: `${getStartPosition(start)}px`,
         height: `${getBlockHeight(duration)}px`,
-        width: `calc(100% - ${index * EVENT_GAP}px)`,
+        width: `calc(100% - ${gap}px)`,
         right: 0,
       }}
     >

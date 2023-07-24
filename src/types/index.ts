@@ -58,7 +58,7 @@ export type MonthRowsT = {
   slots: CellT[]
 }
 
-type CellT = CalendarEventType & {
+export type CellT = CalendarEventType & {
   duration?: Duration
 }
 
@@ -116,3 +116,5 @@ export type ConfigT = {
 export type ViewsT = ValueOF<Views>
 
 export type ModesT = ValueOF<Devices>
+
+export type WeekDayRoesT = WeekRowsType & DayRowsType
