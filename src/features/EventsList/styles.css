@@ -1,7 +1,7 @@
 .event-title {
-  color: black;
+  color: var(--black);
 }
 
 .event-title_current-day {
-  color: red;
+  color: var(--red);
 }

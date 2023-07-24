@@ -4,7 +4,6 @@ import { MAX_DISPLAYED_SLOTS } from '../../MonthSlots/constants'
 import MonthEventModal from '../../MonthEventModal'
 import { MonthEvent } from '../../MonthEvent'
 import Button from '../../Button'
-import colors from '../../../theme/colors'
 import { isCurrentDay } from '../../../helpers'
 import { DateFormat } from '../../../constants'
 
@@ -54,9 +53,9 @@ const MonthDesktopSlot = ({
           ariaLabel="day"
           className={`month-cell-day ${
             !isCurrentMonth ? 'month-cell-day--othermonth' : ''
-          } ${isSameDay(date, selectedDate) ? 'selected-date' : ''} ${
-            isCurrentDay(date) ? 'current-date' : ''
-          }`}
+          } ${isCurrentDay(date) ? 'current-day' : ''} ${
+            isSameDay(date, selectedDate) ? 'selected-date' : ''
+          } `}
           onClick={() => {
             onSelectDate(date)
           }}

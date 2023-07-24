@@ -9,12 +9,15 @@
   margin-bottom: 10px;
 }
 
-.current-date {
+.current-day,
+.month-cell-day.current-day {
   color: var(--red);
 }
 
-.current-date:hover,
-.current-date.selected-date,
-.current-date.selected-date:hover {
+.current-day:hover,
+.current-day.selected-date,
+.current-day.selected-date:hover,
+.month-cell-day.current-day:hover {
+  color: var(--white);
   background-color: var(--red);
 }
