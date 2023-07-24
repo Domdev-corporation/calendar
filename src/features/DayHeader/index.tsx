@@ -1,7 +1,6 @@
 import { memo } from 'react'
 import { format } from 'date-fns'
 
-import colors from '../../theme/colors'
 import { isCurrentDay } from '../../helpers'
 import { DateFormat } from '../../constants'
 import Text from '../../components/Text'

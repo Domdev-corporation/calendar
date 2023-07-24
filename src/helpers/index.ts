@@ -12,24 +12,29 @@ import { format } from 'date-fns'
 
 import { CellT } from '../types'
 import {
-  CELL_HEIGHT,
   MINUTES_IN_HOUR,
   DateFormat,
   WEEK_DAYS,
   INDEX_OF_SUNDAY,
 } from '../constants'
 
-export const getStartPosition = (startDate: Date | string): number => {
+export const getStartPosition = (
+  startDate: Date | string,
+  cellHeight: number,
+): number => {
   const minutes = format(addDays(new Date(startDate), 0), DateFormat.MINUTE)
 
-  return (CELL_HEIGHT / MINUTES_IN_HOUR) * +minutes
+  return (cellHeight / MINUTES_IN_HOUR) * +minutes
 }
 
-export const getBlockHeight = (duration?: Duration): number => {
+export const getBlockHeight = (
+  cellHeight: number,
+  duration?: Duration,
+): number => {
   const hours = duration?.hours ?? 1
   const minutes = duration?.minutes ?? 0
 
-  return hours * CELL_HEIGHT + minutes * (CELL_HEIGHT / MINUTES_IN_HOUR)
+  return hours * cellHeight + minutes * (cellHeight / MINUTES_IN_HOUR)
 }
 
 export const checkSelected = (

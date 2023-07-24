@@ -36,7 +36,7 @@ const MonthDesktopSlot = ({
     <div
       onClick={event => {
         if (!slots.length) {
-          const eventData = { time: `${Date.now()}`, day: date }
+          const eventData = { time: new Date().toISOString(), day: date }
           onClickCell(eventData)
 
           if (newEventModal)
