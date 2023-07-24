@@ -1,6 +1,7 @@
 import { TimePicker } from '../../TimePicker'
 import EventItem from '../../EventItem'
 import EventContainer from '../../EventContainer'
+import { eventsService } from '../../../services/eventsService'
 import { checkDay, checkSelected, getDateOfWeekday } from '../../../helpers'
 import { useModals } from '../../../contexts/ModalContext/useModals'
 
@@ -20,6 +21,8 @@ const WeekSlotsDesktop = ({
   startHour,
 }: WeekSlotsDesktopProps): JSX.Element => {
   const { onOpen, onClose } = useModals()
+
+  const { getGap } = eventsService(renderRows)
 
   return (
     <>
@@ -66,6 +69,7 @@ const WeekSlotsDesktop = ({
                         }}
                         key={event.id}
                         index={eventIndex}
+                        gap={getGap(event.id)}
                         overlapping={event?.overlapping}
                         start={event.start}
                         numberOfEvents={eventsByWeek.length}

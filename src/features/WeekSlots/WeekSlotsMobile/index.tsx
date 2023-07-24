@@ -1,6 +1,7 @@
 import { TimePicker } from '../../TimePicker'
 import EventItem from '../../EventItem'
 import EventContainer from '../../EventContainer'
+import { eventsService } from '../../../services/eventsService'
 import { checkSelected, convertTo24HourFormat } from '../../../helpers'
 import { useModals } from '../../../contexts/ModalContext/useModals'
 
@@ -22,6 +23,8 @@ const WeekSlotsMobile = ({
   selectedDate,
 }: WeekSlotsMobileProps): JSX.Element => {
   const { onOpen, onClose } = useModals()
+
+  const { getGap } = eventsService(renderRows)
 
   return (
     <>
@@ -63,6 +66,7 @@ const WeekSlotsMobile = ({
                         if (eventModal)
                           onOpen(e, eventModal({ ...event, onClose }))
                       }}
+                      gap={getGap(event.id)}
                       key={event.id}
                       index={eventIndex}
                       overlapping={event?.overlapping}

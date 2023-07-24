@@ -10,4 +10,5 @@ export type EventContainerProps = ReactChildrenT & {
   index: number
   numberOfEvents: number
   onClick: (e: MouseEvent) => void
+  gap: number
 }

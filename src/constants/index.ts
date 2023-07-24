@@ -88,3 +88,5 @@ export enum ArrowDirections {
 }
 
 export const MOBILE_WIDTH = 450
+
+export const EVENT_GAP = 15

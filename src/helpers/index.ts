@@ -1,6 +1,7 @@
 import { MouseEvent } from 'react'
 import {
   addDays,
+  areIntervalsOverlapping,
   getDay,
   getHours,
   getMinutes,
@@ -9,6 +10,7 @@ import {
 } from 'date-fns'
 import { format } from 'date-fns'
 
+import { CellT } from '../types'
 import {
   CELL_HEIGHT,
   MINUTES_IN_HOUR,
@@ -93,4 +95,17 @@ export const convertTo24HourFormat = (timeString: string): string => {
 
 export const isCurrentDay = (day: Date | string): boolean => {
   return isSameDay(new Date(day), new Date())
+}
+
+export const isOverlappingEvents = (
+  event: CellT,
+  currentEvent?: CellT,
+): boolean => {
+  return areIntervalsOverlapping(
+    { start: new Date(event.start), end: new Date(event.end) },
+    {
+      start: new Date(currentEvent?.start || ''),
+      end: new Date(currentEvent?.end || ''),
+    },
+  )
 }
