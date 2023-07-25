@@ -31,7 +31,7 @@ const Calendar = ({
   endHour = END_HOUR,
   events = mockEvents,
   renderEventComponent,
-  mode = Devices.MOBILE,
+  mode = Devices.DESKTOP,
   startHour = START_HOUR,
   currentDay = new Date(),
   dropDownArrow = <ChevronDown />,
