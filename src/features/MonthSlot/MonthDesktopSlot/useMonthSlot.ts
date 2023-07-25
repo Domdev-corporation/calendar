@@ -1,11 +1,41 @@
-import { useEffect, useRef, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import { format } from 'date-fns'
 
 import { useModals } from '../../../contexts/ModalContext/useModals'
+import { DateFormat } from '../../../constants'
 
-export const useMonthSlot = () => {
+import { MonthDesktopSlotProps } from './types'
+import { setCurrentTimeToDate } from './helpers'
+
+export const useMonthSlot = ({
+  onClickCell,
+  newEventModal,
+}: Pick<MonthDesktopSlotProps, 'onClickCell' | 'newEventModal'>) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const modalRef = useRef<HTMLDivElement | null>(null)
   const { onOpen, onClose } = useModals()
+
+  const onEventClickHandler = (
+    isCollapsedSlot: boolean,
+    callback: () => void,
+  ): void => {
+    if (isCollapsedSlot) setModalOpen(true)
+
+    if (!isCollapsedSlot) callback()
+  }
+
+  const handleCellClick = (
+    event: React.MouseEvent<HTMLDivElement>,
+    date: Date,
+  ) => {
+    const eventData = {
+      time: format(new Date(), DateFormat.TIME_STAMP),
+      day: setCurrentTimeToDate(date),
+    }
+    onClickCell(eventData)
+
+    if (newEventModal) onOpen(event, newEventModal({ ...eventData, onClose }))
+  }
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
@@ -24,15 +54,6 @@ export const useMonthSlot = () => {
     }
   }, [modalRef])
 
-  const onEventClickHandler = (
-    isCollapsedSlot: boolean,
-    callback: () => void,
-  ): void => {
-    if (isCollapsedSlot) setModalOpen(true)
-
-    if (!isCollapsedSlot) callback()
-  }
-
   return {
     modalOpen,
     closeModalHandler: setModalOpen,
@@ -40,5 +61,6 @@ export const useMonthSlot = () => {
     modalRef,
     onOpen,
     onClose,
+    handleCellClick,
   }
 }
