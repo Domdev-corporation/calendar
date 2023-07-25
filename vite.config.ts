@@ -14,9 +14,9 @@ export default defineConfig(() => ({
     dts({
       include: [
         'src/index.tsx',
-        'src/types.ts',
-        'src/Chronous/index.tsx',
-        'src/Chronous/types.ts',
+        'src/types/index.ts',
+        'src/features/Chronous/index.tsx',
+        'src/features/Chronous/types.ts',
       ],
     }),
   ],
