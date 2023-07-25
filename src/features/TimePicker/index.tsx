@@ -3,21 +3,20 @@ import './styles.css'
 
 import { useTimePicker } from './useTimePicker'
 import { TimePickerProps } from './types'
-import { calculateTopIndentation, isDisplay } from './helpers'
+import { isDisplay } from './helpers'
 import { PICKER_SIZE } from './constants'
 
 export const TimePicker = ({
   endHour,
   startHour,
 }: TimePickerProps): JSX.Element | null => {
-  const { time } = useTimePicker(endHour, startHour)
+  const { topIndentation } = useTimePicker(endHour, startHour)
 
   return isDisplay(endHour, startHour) ? (
     <Flex
       className="timeline"
       sx={{
-        top:
-          calculateTopIndentation(time, endHour - startHour) - PICKER_SIZE / 2,
+        top: topIndentation - PICKER_SIZE / 2,
         left: `-${PICKER_SIZE / 2}px`,
       }}
     >

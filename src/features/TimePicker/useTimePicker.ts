@@ -2,10 +2,15 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 
 import { ONE_MINUTE_IN_MILLISECONDS } from '../../constants'
 
-import { calculateInitialTime, calculateMinutesInHours } from './helpers'
+import {
+  calculateInitialTime,
+  calculateMinutesInHours,
+  calculateTopIndentation,
+} from './helpers'
 
 export const useTimePicker = (endHour: number, startHour: number) => {
   const [time, setTime] = useState(0)
+  const [topIndentation, setTopIndentation] = useState(0)
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -21,5 +26,9 @@ export const useTimePicker = (endHour: number, startHour: number) => {
     setTime(calculateInitialTime(startHour))
   }, [startHour])
 
-  return { time }
+  useEffect(() => {
+    setTopIndentation(calculateTopIndentation(time, endHour - startHour))
+  }, [endHour, startHour, time])
+
+  return { time, topIndentation }
 }
