@@ -1,11 +1,12 @@
-import { useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import { getScreenWidth } from '../../helpers'
 import { ModalT } from '../../contexts/ModalContext/types'
 import { MOBILE_WIDTH } from '../../constants'
 
 export const useModal = ({ containerW, isOpen, x, y }: ModalT) => {
-  const isMobile = MOBILE_WIDTH > getScreenWidth()
+  const [windowWidth, setWindowWidth] = useState(0)
+  const isMobile = MOBILE_WIDTH > windowWidth
 
   const ref = useRef<HTMLDivElement | null>(null)
   const modalWidth = ref.current?.offsetWidth || 0
@@ -19,6 +20,8 @@ export const useModal = ({ containerW, isOpen, x, y }: ModalT) => {
 
     return x
   }
+
+  useEffect(() => setWindowWidth(getScreenWidth()), [])
 
   return {
     getIndentLeft,
