@@ -1,4 +1,4 @@
-import { format } from 'date-fns'
+import { format, setHours, setMinutes, setSeconds } from 'date-fns'
 
 import {
   GetSlotAttributes,
@@ -24,4 +24,13 @@ export const getSlotAttributes = ({
     : format(new Date(slot.start), DateFormat.HOUR_MERIDIEM)
 
   return { isCollapsedSlot, slotTitle, slotTime }
+}
+
+export const setCurrentTimeToDate = (date: Date): Date => {
+  const now = new Date()
+
+  return setSeconds(
+    setMinutes(setHours(date, now.getHours()), now.getMinutes()),
+    now.getSeconds(),
+  )
 }
