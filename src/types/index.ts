@@ -108,7 +108,7 @@ export type ModalsT<EventT> = {
 }
 
 export type ConfigT = {
-  minWidth: number
+  maxWidth: number
   mode?: ValueOF<Devices>
   view?: ViewsT
 }

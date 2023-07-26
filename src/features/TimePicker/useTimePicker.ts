@@ -26,7 +26,7 @@ export const useTimePicker = (endHour: number, startHour: number) => {
     setTime(calculateInitialTime(startHour))
   }, [startHour])
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     setTopIndentation(calculateTopIndentation(time, endHour - startHour))
   }, [endHour, startHour, time])
 

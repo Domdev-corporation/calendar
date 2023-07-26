@@ -66,9 +66,9 @@ export enum MERIDIEM {
 export const MINUTES_IN_HOUR = 60
 
 export enum Views {
-  DAY = 'Day',
-  WEEK = 'Week',
-  MONTH = 'Month',
+  DAY = 'day',
+  WEEK = 'week',
+  MONTH = 'month',
 }
 
 export const ONE_MINUTE_IN_MILLISECONDS = 60 * 1000
