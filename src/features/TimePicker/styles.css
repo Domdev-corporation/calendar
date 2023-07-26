@@ -1,5 +1,5 @@
 .timeline {
-  z-index: 5;
+  z-index: var(--time-picker-z-index);
   position: absolute;
   right: 0;
   align-items: center;

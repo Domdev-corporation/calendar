@@ -1,6 +1,7 @@
 :root {
   --border-styles: 1px solid #dadce0;
   --cell-height: 60px;
+  --time-picker-z-index: 1000;
 }
 
 .button-reset {
