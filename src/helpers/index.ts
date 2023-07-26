@@ -114,3 +114,7 @@ export const isOverlappingEvents = (
     },
   )
 }
+
+export const capitalizeFirstLetter = (str: string): string => {
+  return str.replace(/^\w/, firstLetter => firstLetter.toUpperCase())
+}
