@@ -1,3 +1,4 @@
+import { MouseEvent } from 'react'
 import { format } from 'date-fns'
 
 import { useModals } from '../../contexts/ModalContext/useModals'
@@ -8,24 +9,22 @@ import { CreateNewEventProps } from './types'
 
 const CreateNewEvent = ({
   newEventModal = () => null,
+  onClickCell,
 }: CreateNewEventProps): JSX.Element => {
   const { onClose, onOpen } = useModals()
 
-  return (
-    <Plus
-      onClick={e => {
-        onOpen(
-          e,
-          newEventModal({
-            onClose,
-            day: new Date(),
-            time: String(format(new Date(), DateFormat.TIME_STAMP)),
-          }),
-        )
-      }}
-      className="header-grid__plus"
-    />
-  )
+  const handleClick = (event: MouseEvent<HTMLDivElement>): void => {
+    const date = {
+      day: new Date(),
+      time: String(format(new Date(), DateFormat.TIME_STAMP)),
+    }
+
+    onClickCell?.(date)
+
+    onOpen(event, newEventModal({ onClose, ...date }))
+  }
+
+  return <Plus onClick={handleClick} className="header-grid__plus" />
 }
 
 export default CreateNewEvent

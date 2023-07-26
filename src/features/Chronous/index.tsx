@@ -36,7 +36,7 @@ const Calendar = ({
   currentDay = new Date(),
   dropDownArrow = <ChevronDown />,
   eventModal,
-  newEventModal,
+  newEventModal = () => null,
   onClickCell = () => {},
   onClickEvent = () => {},
   onChangeDate = () => {},
@@ -123,7 +123,12 @@ const Calendar = ({
               onClick={next}
             />
           </Flex>
-          {isMobile && <CreateNewEvent newEventModal={newEventModal} />}
+          {isMobile && (
+            <CreateNewEvent
+              onClickCell={onClickCell}
+              newEventModal={newEventModal}
+            />
+          )}
           {!isMobile && (
             <Text className="current-date header-grid-date">
               {format(startDate, DateFormat.MONTH_LONG)}
