@@ -40,8 +40,8 @@ export const App = () => {
   return (
     <Chronous
       events={events}
-      view="Week"
-      config={[{ minWidth: 450, mode: 'desktop' }]}
+      view="week"
+      config={[{ maxWidth: 450, mode: 'mobile' }]}
       nextButton={<ChevronRight />}
       prevButton={<ChevronLeft />}
       dropDownArrow={<ChevronDown />}
@@ -101,8 +101,8 @@ export const App = () => {
   <tr>
     <td>view</td>
     <td>Specifies calendar view</td>
-    <td><code>'Week'</code></td>
-    <td>"Day" | "Week" | "Month"</td>
+    <td><code>'week'</code></td>
+    <td>"day" | "week" | "month"</td>
   </tr>
   <tr>
     <td>mode</td>
@@ -186,7 +186,7 @@ export const App = () => {
     <td>onViewChange</td>
     <td>Returns a chosen view on view change</td>
     <td>-</td>
-    <td>onViewChange: (view: "Day" | "Week" | "Month") => void</td>
+    <td>onViewChange: (view: "day" | "week" | "month") => void</td>
   </tr>
   <tr>
     <td>onDateChange</td>
@@ -196,15 +196,15 @@ export const App = () => {
   </tr>
   <tr>
     <td>config</td>
-    <td>Takes an array of objects to manipulate view: <code>minWidth, mode, view</code></td>
+    <td>Takes an array of objects to manipulate view: <code>maxWidth, mode, view</code></td>
     <td>-</td>
-    <td>{minWidth: number, mode: "Day" | "Week" | "Month", view: "Day" | "Week" | "Month"}[]</td>
+    <td>{maxWidth: number, mode: "day" | "week" | "month", view: "day" | "week" | "month"}[]</td>
   </tr>
   <tr>
     <td colspan='4' align='center'><h3><code>config</code> parameters:</h3></td>
   </tr>
   <tr>
-    <td>minWidth</td>
+    <td>maxWidth</td>
     <td>Defines a width after which the mode will change</td>
     <td>-</td>
     <td>number</td>
@@ -218,7 +218,7 @@ export const App = () => {
   <tr>
     <td>view</td>
     <td>Specifies calendar view</td>
-    <td><code>'Week'</code></td>
-    <td>"Day" | "Week" | "Month"</td>
+    <td>-</td>
+    <td>"day" | "week" | "month"</td>
   </tr>
 </table>

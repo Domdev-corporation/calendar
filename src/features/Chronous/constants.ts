@@ -3,9 +3,9 @@ import MonthView from '../MonthView'
 import DayView from '../DayView'
 
 export const VIEW_MODES = {
-  Week: WeekView,
-  Day: DayView,
-  Month: MonthView,
+  week: WeekView,
+  day: DayView,
+  month: MonthView,
 }
 
 export const END_HOUR = 24

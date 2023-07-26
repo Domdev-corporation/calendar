@@ -88,7 +88,7 @@ const Calendar = ({
             <Flex
               align="center"
               className="header-grid__back-month"
-              onClick={() => handleViewMode('Month')}
+              onClick={() => handleViewMode('month')}
             >
               <Arrow />
               <Text>{format(startDate, DateFormat.MONTH_LONG)}</Text>

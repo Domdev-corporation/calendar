@@ -1,7 +1,7 @@
-import { useCallback, useMemo, useState } from 'react'
+import { useCallback, useEffect, useMemo, useState } from 'react'
 import { addDays, subDays, isBefore, isAfter } from 'date-fns'
 
-import { ViewsT } from '../../types'
+import { ModesT, ViewsT } from '../../types'
 import { configService } from '../../services/configService'
 import { useWindowResize } from '../../hooks/useWindowResize'
 import { getScreenWidth } from '../../helpers'
@@ -33,11 +33,11 @@ export const useCalendar = ({
 }: UseCalendarProps) => {
   const [windowWidth, setWindowWidth] = useState<number>(0)
   const { getView, getMode } = configService(config, windowWidth)
-  const [viewMode, setViewMode] = useState<ViewsT>(getView(view))
+  const [viewMode, setViewMode] = useState<ViewsT>(view)
   const [currentDate, setCurrentDate] = useState<Date>(currentDay)
   const [selectedDate, setSelectedDate] = useState<Date>(new Date())
   const [isEventsList, setEventsList] = useState<boolean>(false)
-
+  const [deviceMode, setDeviceMode] = useState<ModesT>(mode)
   const currentYear = useMemo(() => currentDate.getFullYear(), [currentDate])
 
   const startDate = useMemo(
@@ -106,11 +106,18 @@ export const useCalendar = ({
     onViewChange(view)
   }
 
-  useWindowResize(() => setWindowWidth(getScreenWidth()))
+  useWindowResize(() => {
+    setWindowWidth(getScreenWidth())
+  })
 
   const handleEventsList = () => {
     setEventsList(prev => !prev)
   }
+
+  useEffect(() => {
+    setDeviceMode(getMode(mode))
+    setViewMode(getView(view))
+  }, [windowWidth])
 
   return {
     viewMode,
@@ -126,8 +133,8 @@ export const useCalendar = ({
     goToday,
     selectDateHandler,
     handleViewMode,
-    deviceMode: getMode(mode),
-    isMobile: isMobileMode(getMode(mode)),
+    deviceMode,
+    isMobile: isMobileMode(deviceMode),
     isWeek: isWeekView(viewMode),
     isEventsList,
     handleEventsList,
