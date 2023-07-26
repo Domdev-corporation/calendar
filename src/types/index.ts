@@ -81,7 +81,7 @@ export type HandleClickOnCellT = {
   onClick: (time: string, day: Date) => void
 }
 
-type OnCellClickT = {
+export type OnCellClickT = {
   time: string
   day: Date
 }
