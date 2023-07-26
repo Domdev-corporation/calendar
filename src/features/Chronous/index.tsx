@@ -30,17 +30,17 @@ const Calendar = ({
   view = Views.WEEK,
   endHour = END_HOUR,
   events = mockEvents,
-  renderEventComponent,
+  customEventComponent,
   mode = Devices.DESKTOP,
   startHour = START_HOUR,
   currentDay = new Date(),
   dropDownArrow = <ChevronDown />,
   eventModal,
   newEventModal = () => null,
-  onClickCell = () => {},
-  onClickEvent = () => {},
-  onChangeDate = () => {},
-  onChangeView = () => {},
+  onCellClick = () => {},
+  onEventClick = () => {},
+  onDateChange = () => {},
+  onViewChange = () => {},
 }: CalendarProps): JSX.Element => {
   const {
     isWeek,
@@ -69,8 +69,8 @@ const Calendar = ({
     endHour,
     startHour,
     currentDay: new Date(currentDay),
-    onChangeView,
-    onChangeDate,
+    onViewChange,
+    onDateChange,
   })
 
   const View = VIEW_MODES[viewMode]
@@ -98,8 +98,8 @@ const Calendar = ({
           {!isMobile && (
             <Button
               ariaLabel="Today"
-              onClick={goToday}
               className="today-button header-grid-today"
+              onClick={goToday}
             >
               Today
             </Button>
@@ -125,7 +125,7 @@ const Calendar = ({
           </Flex>
           {isMobile && (
             <CreateNewEvent
-              onClickCell={onClickCell}
+              onCellClick={onCellClick}
               newEventModal={newEventModal}
             />
           )}
@@ -149,28 +149,28 @@ const Calendar = ({
 
           {!isMobile && (
             <DropDown
-              list={Object.values(Views)}
               value={viewMode}
-              onChange={handleViewMode}
+              list={Object.values(Views)}
               dropdownArrow={dropDownArrow}
+              onChange={handleViewMode}
             />
           )}
         </div>
         <div className="calendar">
           <View
-            isEventsList={isEventsList}
             events={events}
             endHour={endHour}
             startHour={startHour}
             startDate={startDate}
             deviceMode={deviceMode}
+            isEventsList={isEventsList}
             selectedDate={selectedDate}
             selectedEvent={selectedEvent}
-            renderEventComponent={renderEventComponent}
+            renderEventComponent={customEventComponent}
             renderRows={renderRows as CombinedViewRowsType}
             eventModal={eventModal}
-            onClickCell={onClickCell}
-            onClickEvent={onClickEvent}
+            onCellClick={onCellClick}
+            onEventClick={onEventClick}
             newEventModal={newEventModal}
             selectDateHandler={selectDateHandler}
           />
@@ -180,8 +180,8 @@ const Calendar = ({
           <Flex className="footer">
             <Button
               ariaLabel="Today"
-              onClick={goToday}
               className="today-button header-grid-today"
+              onClick={goToday}
             >
               Today
             </Button>

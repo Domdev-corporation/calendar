@@ -9,7 +9,7 @@ import { CreateNewEventProps } from './types'
 
 const CreateNewEvent = ({
   newEventModal = () => null,
-  onClickCell,
+  onCellClick,
 }: CreateNewEventProps): JSX.Element => {
   const { onClose, onOpen } = useModals()
 
@@ -19,7 +19,7 @@ const CreateNewEvent = ({
       time: String(format(new Date(), DateFormat.TIME_STAMP)),
     }
 
-    onClickCell?.(date)
+    onCellClick?.(date)
 
     onOpen(event, newEventModal({ onClose, ...date }))
   }

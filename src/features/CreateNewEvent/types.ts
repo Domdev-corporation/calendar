@@ -1,8 +1,8 @@
 import { ReactNode } from 'react'
 
-import { NewEventModalT, OnClickCellT } from '../../types'
+import { NewEventModalT, OnCellClickT } from '../../types'
 
 export type CreateNewEventProps = {
   newEventModal: (a: NewEventModalT) => ReactNode
-  onClickCell: (a: OnClickCellT) => void
+  onCellClick: (a: OnCellClickT) => void
 }

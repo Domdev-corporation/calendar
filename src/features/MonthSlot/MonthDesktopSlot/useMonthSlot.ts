@@ -8,9 +8,9 @@ import { MonthDesktopSlotProps } from './types'
 import { setCurrentTimeToDate } from './helpers'
 
 export const useMonthSlot = ({
-  onClickCell,
+  onCellClick,
   newEventModal,
-}: Pick<MonthDesktopSlotProps, 'onClickCell' | 'newEventModal'>) => {
+}: Pick<MonthDesktopSlotProps, 'onCellClick' | 'newEventModal'>) => {
   const [modalOpen, setModalOpen] = useState<boolean>(false)
   const modalRef = useRef<HTMLDivElement | null>(null)
   const { onOpen, onClose } = useModals()
@@ -32,7 +32,7 @@ export const useMonthSlot = ({
       time: format(new Date(), DateFormat.TIME_STAMP),
       day: setCurrentTimeToDate(date),
     }
-    onClickCell(eventData)
+    onCellClick(eventData)
 
     if (newEventModal) onOpen(event, newEventModal({ ...eventData, onClose }))
   }
