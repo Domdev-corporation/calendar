@@ -11,8 +11,8 @@ const WeekSlotsDesktop = ({
   startDate,
   eventsByWeek,
   renderRows,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   selectedEvent,
   renderEventComponent: Component = EventItem,
   eventModal,
@@ -43,7 +43,7 @@ const WeekSlotsDesktop = ({
                       time,
                       day: getDateOfWeekday(index, startDate),
                     }
-                    onClickCell(eventData)
+                    onCellClick(eventData)
 
                     if (newEventModal)
                       onOpen(e, newEventModal({ ...eventData, onClose }))
@@ -62,7 +62,7 @@ const WeekSlotsDesktop = ({
                       <EventContainer
                         onClick={e => {
                           e.stopPropagation()
-                          onClickEvent(event)
+                          onEventClick(event)
 
                           if (eventModal)
                             onOpen(e, eventModal({ ...event, onClose }))

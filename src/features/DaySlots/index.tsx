@@ -13,8 +13,8 @@ const DaySlots = ({
   day,
   eventsByDay,
   renderRows,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   selectedEvent,
   renderEventComponent: Component = EventItem,
   eventModal,
@@ -39,7 +39,7 @@ const DaySlots = ({
 
                   if (newEventModal) onOpen(e, newEventModal(eventData))
 
-                  onClickCell(eventData)
+                  onCellClick(eventData)
                 }}
                 className="cell day-cell"
                 key="cell"
@@ -57,7 +57,7 @@ const DaySlots = ({
                     <EventContainer
                       onClick={e => {
                         e.stopPropagation()
-                        onClickEvent(event)
+                        onEventClick(event)
 
                         if (eventModal)
                           onOpen(e, eventModal({ ...event, onClose }))

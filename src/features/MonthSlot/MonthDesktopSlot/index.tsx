@@ -15,8 +15,8 @@ const MonthDesktopSlot = ({
   cell,
   index,
   onSelectDate,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   selectedDate,
   eventModal,
   newEventModal,
@@ -36,7 +36,7 @@ const MonthDesktopSlot = ({
     <div
       onClick={event => {
         const eventData = { time: new Date().toISOString(), day: date }
-        onClickCell(eventData)
+        onCellClick(eventData)
 
         if (newEventModal)
           onOpen(event, newEventModal({ ...eventData, onClose }))
@@ -80,7 +80,7 @@ const MonthDesktopSlot = ({
               e.stopPropagation()
 
               onEventClickHandler(isCollapsedSlot, () => {
-                onClickEvent(slot)
+                onEventClick(slot)
 
                 if (eventModal) onOpen(e, eventModal({ ...event, onClose }))
               })
@@ -93,7 +93,7 @@ const MonthDesktopSlot = ({
           cell={cell}
           ref={modalRef}
           closeModalHandler={closeModalHandler}
-          onClickEvent={onClickEvent}
+          onEventClick={onEventClick}
         />
       )}
     </div>

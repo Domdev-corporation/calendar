@@ -15,8 +15,8 @@ const WeekView = ({
   selectedEvent,
   renderRows,
   renderEventComponent,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   selectDateHandler,
   eventModal,
   newEventModal,
@@ -59,11 +59,11 @@ const WeekView = ({
         startHour={startHour}
         eventModal={eventModal}
         newEventModal={newEventModal}
-        onClickCell={onClickCell}
+        onCellClick={onCellClick}
         eventsByWeek={eventsByWeek}
         selectedEvent={selectedEvent}
         renderRows={renderRows}
-        onClickEvent={onClickEvent}
+        onEventClick={onEventClick}
         renderEventComponent={renderEventComponent}
       />
     </>

@@ -10,8 +10,8 @@ import { MonthSlots } from './constants'
 
 const MonthView = ({
   selectDateHandler,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   renderRows,
   selectedDate,
   eventModal,
@@ -32,8 +32,8 @@ const MonthView = ({
         newEventModal={newEventModal}
         renderRows={renderRows}
         onSelectDate={selectDateHandler}
-        onClickEvent={onClickEvent}
-        onClickCell={onClickCell}
+        onEventClick={onEventClick}
+        onCellClick={onCellClick}
         selectedDate={selectedDate}
       />
     </>
