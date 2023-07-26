@@ -23,8 +23,6 @@ $ npm install chronous
 $ yarn add chronous
 ```
 
-</br>
-
 <h2><b>Usage</b></h2>
 
 ```jsx
@@ -157,32 +155,32 @@ export const App = () => {
   <tr>
     <td>customEventComponent</td>
     <td>Sets a custom eventComponent</td>
-    <td><EventComponent /></td>
+    <td><code>&lt;EventComponent /&gt;</code></td>
     <td>ReactNode</td>
   </tr>
   <tr>
     <td>eventModal</td>
     <td>Sets a custom event modal that will be open when a user clicks on existing event</td>
     <td>-</td>
-    <td>eventModal: ((a: {onClose: () => void, id: string, title: string, start: string, end: string, overlapping: number, color: string, textColor: string, }) => React.ReactNode)</td>
+    <td>eventModal: ((argument: {onClose: () => void, id: string, title: string, start: string, end: string, overlapping: number, color: string, textColor: string, }) => React.ReactNode)</td>
   </tr>
    <tr>
     <td>newEventModal</td>
     <td>Sets a custom event modal that will be open when a user clicks on an empty cell to create new event</td>
     <td>-</td>
-    <td>newEventModal: ((a: {onClose: () => void, day: Date, time: string }) => React.ReactNode)</td>
+    <td>newEventModal: ((argument: {onClose: () => void, day: Date, time: string }) => React.ReactNode)</td>
   </tr>
   <tr>
     <td>onCellClick</td>
     <td>Allows a user to pass a custom functionality and modal window that will be triggered on cell click</td>
     <td>-</td>
-    <td>onCellClick: (a: {day: Date, time: string}) => void</td>
+    <td>onCellClick: (argument: {day: Date, time: string}) => void</td>
   </tr>
   <tr>
     <td>onEventClick</td>
     <td>Allows a user to pass a custom functionality and modal window that will be triggered on an event click </td>
     <td>-</td>
-    <td>onEventClick: (a: {id: string, title: string, start: string, end: string, overlapping: number, color: string, textColor: string, }) => void</td>
+    <td>onEventClick: (argument: {id: string, title: string, start: string, end: string, overlapping: number, color: string, textColor: string, }) => void</td>
   </tr>
   <tr>
     <td>onViewChange</td>
@@ -198,9 +196,9 @@ export const App = () => {
   </tr>
   <tr>
     <td>config</td>
-    <td>Takes an array of objects to manipulate view: <code>minWidth, mode</code></td>
+    <td>Takes an array of objects to manipulate view: <code>minWidth, mode, view</code></td>
     <td>-</td>
-    <td>{minWidth: number, mode: "Day" | "Week" | "Month"}[]</td>
+    <td>{minWidth: number, mode: "Day" | "Week" | "Month", view: "Day" | "Week" | "Month"}[]</td>
   </tr>
   <tr>
     <td colspan='4' align='center'><h3><code>config</code> parameters:</h3></td>
@@ -214,7 +212,13 @@ export const App = () => {
   <tr>
     <td>mode</td>
     <td>Specifies calendar mode</td>
-    <td><code>'desktop'</code></td>
+    <td>-</td>
     <td>"mobile" | "desktop"</td>
+  </tr>
+  <tr>
+    <td>view</td>
+    <td>Specifies calendar view</td>
+    <td><code>'Week'</code></td>
+    <td>"Day" | "Week" | "Month"</td>
   </tr>
 </table>
