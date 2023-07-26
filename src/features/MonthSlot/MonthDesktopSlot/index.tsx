@@ -30,17 +30,12 @@ const MonthDesktopSlot = ({
     modalRef,
     onClose,
     onOpen,
-  } = useMonthSlot()
+    handleCellClick,
+  } = useMonthSlot({ onCellClick, newEventModal })
 
   return (
     <div
-      onClick={event => {
-        const eventData = { time: new Date().toISOString(), day: date }
-        onCellClick(eventData)
-
-        if (newEventModal)
-          onOpen(event, newEventModal({ ...eventData, onClose }))
-      }}
+      onClick={event => handleCellClick(event, date)}
       className="cell month-cell"
     >
       <div className="month-cell-week">
