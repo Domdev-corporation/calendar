@@ -101,9 +101,10 @@ export const useCalendar = ({
     setViewMode(Views.DAY)
   }
 
-  const handleViewMode = (view: ViewsT) => {
-    setViewMode(view)
-    onViewChange(view)
+  const handleViewMode = (view: string) => {
+    const newView = view.toLowerCase() as ViewsT
+    setViewMode(newView)
+    onViewChange(newView)
   }
 
   useWindowResize(() => {

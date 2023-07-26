@@ -5,6 +5,7 @@ import { format } from 'date-fns'
 
 import CreateNewEvent from '../CreateNewEvent'
 import Button from '../Button'
+import { capitalizeFirstLetter } from '../../helpers'
 import { ModalProvider } from '../../contexts/ModalContext'
 import { ArrowDirections, DateFormat, Devices, Views } from '../../constants'
 import Text from '../../components/Text'
@@ -149,8 +150,8 @@ const Calendar = ({
 
           {!isMobile && (
             <DropDown
-              value={viewMode}
-              list={Object.values(Views)}
+              value={capitalizeFirstLetter(viewMode)}
+              list={Object.values(Views).map(capitalizeFirstLetter)}
               dropdownArrow={dropDownArrow}
               onChange={handleViewMode}
             />
