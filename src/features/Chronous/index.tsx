@@ -17,7 +17,6 @@ import Arrow from '../../components/Arrow'
 
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
-import { mockEvents } from './mockData'
 import { END_HOUR, START_HOUR, VIEW_MODES } from './constants'
 
 const Calendar = ({
@@ -29,7 +28,7 @@ const Calendar = ({
   selectedEvent,
   view = Views.WEEK,
   endHour = END_HOUR,
-  events = mockEvents,
+  events = [],
   customEventComponent,
   mode = Devices.DESKTOP,
   startHour = START_HOUR,
