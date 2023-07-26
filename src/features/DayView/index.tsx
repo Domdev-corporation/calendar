@@ -11,8 +11,8 @@ const DayView = ({
   events,
   startDate,
   selectedEvent,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   renderRows,
   renderEventComponent,
   eventModal,
@@ -41,8 +41,8 @@ const DayView = ({
         eventsByDay={getEventsByDay(events, startDate)}
         selectedEvent={selectedEvent}
         renderRows={renderRows}
-        onClickCell={onClickCell}
-        onClickEvent={onClickEvent}
+        onCellClick={onCellClick}
+        onEventClick={onEventClick}
         renderEventComponent={renderEventComponent}
       />
     </>

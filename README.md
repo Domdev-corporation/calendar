@@ -1,19 +1,13 @@
 <h1 align='center'>Chronous</h1>
 
-<h2 align='center'>The project is still in the development</h2>
-
-[![NPM version][npm-image]][npm-url] [![bundle size][bundlephobia-image]][bundlephobia-url]
-
-[npm-image]: https://img.shields.io/npm/v/chronous.svg
-[npm-url]: http://npmjs.org/package/chronous
-[bundlephobia-image]: https://badgen.net/bundlephobia/minzip/chronous
-[bundlephobia-url]: https://bundlephobia.com/result?p=chronous
+![npm](https://img.shields.io/npm/v/chronous)
+![npm bundle size](https://img.shields.io/bundlephobia/minzip/chronous)
 
 <a href='https://midstem.net'>
   <img src='images/midstem.png' height='60'>
 </a>
 
-</br>
+<p><b>Chronous</b> is a versatile npm package, offering a customizable and feature-rich calendar solution adaptable for both desktop and mobile platforms. With Chronous, users can easily modify and tailor the calendar to suit their specific needs, enabling seamless integration into various web applications.</p>
 
 <h3>Installation</h3>
 
@@ -29,19 +23,55 @@ $ npm install chronous
 $ yarn add chronous
 ```
 
-</br>
-
 <h2><b>Usage</b></h2>
 
 ```jsx
+import { useState } from 'react'
 import Chronous from 'chronous'
+import ModalWindow from 'src/features/ModalWindow'
+import { EventT } from 'src/types'
+import ChevronRight from 'src/assets/icons/chevron-right.svg'
+import ChevronLeft from 'src/assets/icons/chevron-left.svg'
+import ChevronDown from 'src/assets/icons/chevron-down.svg'
 
-export const App = () => (
-  <Chronous>
-)
+export const App = () => {
+  const [events, setEvents] = useState<EventT[]>([])
+
+  return (
+    <Chronous
+      events={events}
+      view="Week"
+      config={[{ minWidth: 450, mode: 'desktop' }]}
+      nextButton={<ChevronRight />}
+      prevButton={<ChevronLeft />}
+      dropDownArrow={<ChevronDown />}
+      eventModal={({ onClose, ...event }) => (
+        <ModalWindow
+          onClose={onClose}
+          id={event.id}
+          events={events}
+          selectedEvent={event}
+          setEvents={setEvents}
+        />
+      )}
+      newEventModal={({ onClose, time, day }) => (
+        <ModalWindow
+          day={day}
+          time={time}
+          events={events}
+          onClose={onClose}
+          setEvents={setEvents}
+        />
+      )}
+    />
+  )
+}
+
 ```
 
-<h2>🔥 <a href='https://calendar.midstem.net'>Play around with Chronous</a></h2>
+</br>
+
+<h2>🔥 <a href='https://chronous.midstem.net'>Play around with Chronous</a></h2>
 
 </br>
 
@@ -65,8 +95,8 @@ export const App = () => (
   <tr>
     <td>events</td>
     <td>List of events to be displayed on the calendar</td>
-    <td>-</td>
-    <td>{id: string; title: string; start: string; end: string; overlapping?: number; position?: string; number; width?: string; color?: string; textColor?: string; opacity?: number}[]</td>
+    <td>There are default events that will be gone as soon as you pass a property <code>events</code></td>
+    <td>{id: string; title: string; start: string; end: string; overlapping?: number; color?: string; textColor?: string; opacity?: number}[]</td>
   </tr>
   <tr>
     <td>view</td>
@@ -75,39 +105,21 @@ export const App = () => (
     <td>"Day" | "Week" | "Month"</td>
   </tr>
   <tr>
-    <td>onClickEvent</td>
-    <td>Function to handle click event on an event</td>
-    <td>-</td>
-    <td>(event: CellT) => void</td>
+    <td>mode</td>
+    <td>Specifies calendar mode</td>
+    <td><code>'desktop'</code></td>
+    <td>"mobile" | "desktop"</td>
   </tr>
   <tr>
-    <td>onClickCell</td>
-    <td>Function to handle click event on a cell</td>
+    <td>selectedEvent</td>
+    <td>Returns a selected event id</td>
     <td>-</td>
-    <td>(time: string, day: Date) => void</td>
-  </tr>
-  <tr>
-    <td>onChangeDate</td>
-    <td>Function to handle date change</td>
-    <td>-</td>
-    <td>(start: Date, end: Date) => void</td>
-  </tr>
-  <tr>
-    <td>onChangeView</td>
-    <td>Function to handle view change</td>
-    <td>-</td>
-    <td>(view: "Day" | "Week" | "Month") => void</td>
-  </tr>
-  <tr>
-    <td>config</td>
-    <td>Configuration array for the calendar view containers</td>
-    <td>-</td>
-    <td>{minWidth: number, view: "Day" | "Week" | "Month"}[]</td>
+    <td>string</td>
   </tr>
   <tr>
     <td>startHour</td>
     <td>Sets starting day hour</td>
-    <td><code>1</code></td>
+    <td><code>0</code></td>
     <td>number</td>
   </tr>
   <tr>
@@ -117,15 +129,21 @@ export const App = () => (
     <td>number</td>
   </tr>
   <tr>
+    <td>currentDay</td>
+    <td>Specifies current day</td>
+    <td><code>new Date()</code></td>
+    <td>string | Date</td>
+  </tr>
+  <tr>
     <td>nextButton</td>
-    <td>Sets custom arrow that gets you to the next day/week/month</td>
-    <td><code>&lt;RightArrow color={colors.teal} /&gt;</code></td>
+    <td>Sets a custom arrow that gets you to the next day/week/month</td>
+    <td><code>&lt;RightArrow /&gt;</code></td>
     <td>ReactNode</td>
   </tr>
   <tr>
     <td>prevButton</td>
-    <td>Sets custom arrow that gets you to the previous day/week/month</td>
-    <td><code>&lt;LeftArrow color={colors.teal} /&gt;</code></td>
+    <td>Sets a custom arrow that gets you to the previous day/week/month</td>
+    <td><code>&lt;LeftArrow /&gt;</code></td>
     <td>ReactNode</td>
   </tr>
   <tr>
@@ -134,48 +152,73 @@ export const App = () => (
     <td><code>&lt;ChevronDown /&gt;</code></td>
     <td>ReactNode</td>
   </tr>
+  <tr>
+    <td>customEventComponent</td>
+    <td>Sets a custom eventComponent</td>
+    <td><code>&lt;EventComponent /&gt;</code></td>
+    <td>ReactNode</td>
+  </tr>
+  <tr>
+    <td>eventModal</td>
+    <td>Sets a custom event modal that will be open when a user clicks on existing event</td>
+    <td>-</td>
+    <td>eventModal: ((argument: {onClose: () => void, id: string, title: string, start: string, end: string, overlapping: number, color: string, textColor: string, }) => React.ReactNode)</td>
+  </tr>
+   <tr>
+    <td>newEventModal</td>
+    <td>Sets a custom event modal that will be open when a user clicks on an empty cell to create new event</td>
+    <td>-</td>
+    <td>newEventModal: ((argument: {onClose: () => void, day: Date, time: string }) => React.ReactNode)</td>
+  </tr>
+  <tr>
+    <td>onCellClick</td>
+    <td>Allows a user to pass a custom functionality and modal window that will be triggered on cell click</td>
+    <td>-</td>
+    <td>onCellClick: (argument: {day: Date, time: string}) => void</td>
+  </tr>
+  <tr>
+    <td>onEventClick</td>
+    <td>Allows a user to pass a custom functionality and modal window that will be triggered on an event click </td>
+    <td>-</td>
+    <td>onEventClick: (argument: {id: string, title: string, start: string, end: string, overlapping: number, color: string, textColor: string, }) => void</td>
+  </tr>
+  <tr>
+    <td>onViewChange</td>
+    <td>Returns a chosen view on view change</td>
+    <td>-</td>
+    <td>onViewChange: (view: "Day" | "Week" | "Month") => void</td>
+  </tr>
+  <tr>
+    <td>onDateChange</td>
+    <td>Returns start and end date on date change</td>
+    <td>-</td>
+    <td>(start: Date, end: Date) => void</td>
+  </tr>
+  <tr>
+    <td>config</td>
+    <td>Takes an array of objects to manipulate view: <code>minWidth, mode, view</code></td>
+    <td>-</td>
+    <td>{minWidth: number, mode: "Day" | "Week" | "Month", view: "Day" | "Week" | "Month"}[]</td>
+  </tr>
+  <tr>
+    <td colspan='4' align='center'><h3><code>config</code> parameters:</h3></td>
+  </tr>
+  <tr>
+    <td>minWidth</td>
+    <td>Defines a width after which the mode will change</td>
+    <td>-</td>
+    <td>number</td>
+  </tr>
+  <tr>
+    <td>mode</td>
+    <td>Specifies calendar mode</td>
+    <td>-</td>
+    <td>"mobile" | "desktop"</td>
+  </tr>
+  <tr>
+    <td>view</td>
+    <td>Specifies calendar view</td>
+    <td><code>'Week'</code></td>
+    <td>"Day" | "Week" | "Month"</td>
+  </tr>
 </table>
-
-</br>
-
-
-<h2>💅 <b>Styling</b></h2>
-
-```css
-.header-grid - styles the grid container that wraps header items. 
-To change the order of the elements, edit this style: grid-template-areas: 'today arrows month year dropdown';
-
-.today-button - styles the today button that gets a user to the current date
-
-.selected-date - styles the selected day button
-
-.dropdown-wrapper - styles the container that wraps dropdown
-
-.dropdown-button - styles the dropdown button that toggles the display of the dropdown list
-
-.dropdown-chevron - styles the dropdown arrow
-
-.dropdown - styles the container that wraps dropdown items
-
-.dropdown-item - styles the dropdown items
-
-.row - styles the container that wraps cells
-
-.cell - styles the container that wraps events
-
-.time - styles the cell that contains time
-
-.event - styles the container that wraps event
-
-.modal-cross - styles the cross button in the modal with other events
-
-.month-cell_mobile - styles the container that wraps events in the mobile view of the monthly calendar
-
-.weekend - styles the weekends in the monthly calendar in the mobile view
-
-.mobile--other-month - styles the date cells that do not belong to the current month in the mobile view
-
-.dot - styles the  dot that represents the presence of events in the monthly calendar in the mobile view
-
-.month-header-mobile - styles the container that wraps the header for the monthly calendar in the mobile view
-```

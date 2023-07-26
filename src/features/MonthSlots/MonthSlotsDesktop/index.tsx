@@ -4,8 +4,8 @@ import { MonthSlotsDesktopProps } from './types'
 
 const MonthSlotsDesktop = ({
   onSelectDate,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   renderRows,
   selectedDate,
   eventModal,
@@ -25,8 +25,8 @@ const MonthSlotsDesktop = ({
               cell={cell}
               index={index}
               onSelectDate={onSelectDate}
-              onClickEvent={onClickEvent}
-              onClickCell={onClickCell}
+              onEventClick={onEventClick}
+              onCellClick={onCellClick}
               selectedDate={selectedDate}
             />
           )

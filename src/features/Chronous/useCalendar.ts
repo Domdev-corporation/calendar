@@ -23,11 +23,11 @@ import {
 export const useCalendar = ({
   currentDay,
   events = [],
-  onChangeDate = () => {},
+  onDateChange = () => {},
   view,
   startHour,
   endHour,
-  onChangeView,
+  onViewChange,
   config,
   mode,
 }: UseCalendarProps) => {
@@ -71,15 +71,15 @@ export const useCalendar = ({
     const { startDate, endDate } = getNextDateRange(currentDate, viewMode)
 
     setCurrentDate(startDate)
-    onChangeDate(startDate, endDate)
-  }, [currentDate, onChangeDate, viewMode])
+    onDateChange(startDate, endDate)
+  }, [currentDate, onDateChange, viewMode])
 
   const previous = useCallback(() => {
     const { startDate, endDate } = getPreviousDateRange(currentDate, viewMode)
 
     setCurrentDate(startDate)
-    onChangeDate(startDate, endDate)
-  }, [currentDate, onChangeDate, viewMode])
+    onDateChange(startDate, endDate)
+  }, [currentDate, onDateChange, viewMode])
 
   const goToday = useCallback(() => {
     const now = new Date()
@@ -87,8 +87,8 @@ export const useCalendar = ({
     setSelectedDate(now)
     setCurrentDate(now)
 
-    if (onChangeDate) onChangeDate(getStartOfWeek(now), getEndOfWeek(now))
-  }, [onChangeDate])
+    if (onDateChange) onDateChange(getStartOfWeek(now), getEndOfWeek(now))
+  }, [onDateChange])
 
   const selectDateHandler = (date: Date) => {
     setSelectedDate(date)
@@ -103,7 +103,7 @@ export const useCalendar = ({
 
   const handleViewMode = (view: ViewsT) => {
     setViewMode(view)
-    onChangeView(view)
+    onViewChange(view)
   }
 
   useWindowResize(() => setWindowWidth(getScreenWidth()))

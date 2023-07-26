@@ -11,7 +11,7 @@ import { MonthEventModalProps } from './types'
 
 const MonthEventModal = forwardRef<HTMLDivElement | null, MonthEventModalProps>(
   (props, ref): JSX.Element => {
-    const { cell, closeModalHandler, onClickEvent } = props
+    const { cell, closeModalHandler, onEventClick } = props
     const { slots, date } = cell
 
     return (
@@ -45,7 +45,7 @@ const MonthEventModal = forwardRef<HTMLDivElement | null, MonthEventModalProps>(
             <MonthEvent
               key={slot.id}
               event={event}
-              onClick={() => onClickEvent(event)}
+              onClick={() => onEventClick(event)}
             />
           )
         })}

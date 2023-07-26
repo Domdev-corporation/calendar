@@ -12,8 +12,8 @@ import { getEventIndexOfDay, handleDayEvents } from './helpers'
 const WeekSlotsMobile = ({
   eventsByWeek,
   renderRows,
-  onClickEvent,
-  onClickCell,
+  onEventClick,
+  onCellClick,
   selectedEvent,
   renderEventComponent: Component = EventItem,
   eventModal,
@@ -41,7 +41,7 @@ const WeekSlotsMobile = ({
 
                   if (newEventModal) onOpen(e, newEventModal(eventData))
 
-                  onClickCell(eventData)
+                  onCellClick(eventData)
                 }}
                 className="cell day-cell"
                 key="cell"
@@ -61,7 +61,7 @@ const WeekSlotsMobile = ({
                     <EventContainer
                       onClick={e => {
                         e.stopPropagation()
-                        onClickEvent(event)
+                        onEventClick(event)
 
                         if (eventModal)
                           onOpen(e, eventModal({ ...event, onClose }))
