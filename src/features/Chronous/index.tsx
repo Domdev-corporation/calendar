@@ -18,14 +18,14 @@ import Arrow from '../../components/Arrow'
 
 import { useCalendar } from './useCalendar'
 import { CalendarProps, CombinedViewRowsType } from './types'
-import { END_HOUR, START_HOUR, VIEW_MODES } from './constants'
+import { END_HOUR, START_HOUR, VIEW_MODES, initialConfig } from './constants'
 
 const Calendar = ({
   children,
   className,
   nextButton,
   prevButton,
-  config = [],
+  config = initialConfig,
   selectedEvent,
   view = Views.WEEK,
   endHour = END_HOUR,
