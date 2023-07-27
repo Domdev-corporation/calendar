@@ -1,4 +1,10 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import {
+  useCallback,
+  useEffect,
+  useLayoutEffect,
+  useMemo,
+  useState,
+} from 'react'
 import { addDays, subDays, isBefore, isAfter } from 'date-fns'
 
 import { ModesT, ViewsT } from '../../types'
