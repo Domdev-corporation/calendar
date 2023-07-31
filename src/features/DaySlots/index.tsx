@@ -49,9 +49,6 @@ const DaySlots = ({
                 )}
                 {events.map(event => {
                   const isSelected = checkSelected(event.id, selectedEvent)
-                  const eventIndex = eventsByDay.findIndex(
-                    day => day.id === event.id,
-                  )
 
                   return (
                     <EventContainer
@@ -64,7 +61,6 @@ const DaySlots = ({
                       }}
                       gap={getGap(event.id)}
                       key={event.id}
-                      index={eventIndex}
                       overlapping={event?.overlapping}
                       start={event.start}
                       numberOfEvents={eventsByDay.length}
