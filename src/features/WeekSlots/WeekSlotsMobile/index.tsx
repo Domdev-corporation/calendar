@@ -7,7 +7,7 @@ import { useModals } from '../../../contexts/ModalContext/useModals'
 
 import './styles.css'
 import { WeekSlotsMobileProps } from './types'
-import { getEventIndexOfDay, handleDayEvents } from './helpers'
+import { handleDayEvents } from './helpers'
 
 const WeekSlotsMobile = ({
   eventsByWeek,
@@ -51,11 +51,6 @@ const WeekSlotsMobile = ({
                 )}
                 {events.map(event => {
                   const isSelected = checkSelected(event.id, selectedEvent)
-                  const eventIndex = getEventIndexOfDay(
-                    eventsByWeek,
-                    selectedDate,
-                    event.id,
-                  )
 
                   return (
                     <EventContainer
@@ -68,7 +63,6 @@ const WeekSlotsMobile = ({
                       }}
                       gap={getGap(event.id)}
                       key={event.id}
-                      index={eventIndex}
                       overlapping={event?.overlapping}
                       start={event.start}
                       numberOfEvents={eventsByWeek.length}

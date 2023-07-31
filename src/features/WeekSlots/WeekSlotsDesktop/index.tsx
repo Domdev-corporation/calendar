@@ -32,8 +32,6 @@ const WeekSlotsDesktop = ({
             <div className="cell time">{time}</div>
 
             {cells.map((events, index) => {
-              const dayEvents = eventsByWeek[index]
-
               return (
                 <div
                   key={index}
@@ -54,9 +52,6 @@ const WeekSlotsDesktop = ({
                   ) : null}
                   {events.map(event => {
                     const isSelected = checkSelected(event.id, selectedEvent)
-                    const eventIndex = dayEvents.findIndex(
-                      day => day.id === event.id,
-                    )
 
                     return (
                       <EventContainer
@@ -68,7 +63,6 @@ const WeekSlotsDesktop = ({
                             onOpen(e, eventModal({ ...event, onClose }))
                         }}
                         key={event.id}
-                        index={eventIndex}
                         gap={getGap(event.id)}
                         overlapping={event?.overlapping}
                         start={event.start}

@@ -5,7 +5,6 @@ import { EventContainerProps } from './types'
 
 const EventContainer = ({
   duration,
-  index,
   isSelected,
   overlapping,
   start,
@@ -20,7 +19,7 @@ const EventContainer = ({
       onClick={e => onClick(e)}
       className={`event-container ${isSelected && 'selected'} `}
       style={{
-        zIndex: (overlapping ? overlapping : index) + 1,
+        zIndex: (overlapping ? overlapping : gap) + 1,
         top: `${getStartPosition(start, cellHeight)}px`,
         height: `${getBlockHeight(cellHeight, duration)}px`,
         width: `calc(100% - ${gap}px)`,
