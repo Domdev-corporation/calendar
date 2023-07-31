@@ -27,7 +27,9 @@ const DropDown = <T extends string>({
           {list.map(item => (
             <li
               key={item}
-              className="dropdown-item"
+              className={`dropdown-item ${
+                item === value ? 'selected-view' : ''
+              }`}
               onClick={() => onChange(item)}
             >
               {item}
